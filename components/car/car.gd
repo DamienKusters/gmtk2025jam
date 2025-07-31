@@ -6,9 +6,9 @@ class_name Car
 
 const MOVE_SPEED: float = .1
 const WIDTH_OFFSET: float = 40
-const HOLE_SPAWN_CHANCE = .1 #10%
+const HOLE_SPAWN_CHANCE = .05 #5%
 
-var width_offset: float = 40.0  # Allow changing later
+var width_offset: float = 50.0  # Allow changing later
 var time_accum: float = 0.0     # For smooth motion based on time
 
 func _process(delta: float) -> void:
@@ -25,8 +25,10 @@ func spawn_hole_attempt():
 	if result <= HOLE_SPAWN_CHANCE:
 		spawn_hole()
 
+var last_spawned_hole: Hole
 func spawn_hole():
 	var i = game.get_hole_instance()
+	last_spawned_hole = i
 	i.position = position
 	game.add_hole(i)
 
@@ -35,6 +37,6 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 		body.run_over(self)
 
 func _on_area_2d_area_entered(area: Area2D) -> void:
-	if area is Hole:
+	if area is Hole and area != last_spawned_hole:
 		# TODO damage chance, not always
 		area.damage_hole()

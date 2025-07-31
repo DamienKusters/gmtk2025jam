@@ -17,6 +17,7 @@ point_count = 14
 script = ExtResource("1_eow3j")
 
 [node name="HoleTick" type="Timer" parent="."]
+wait_time = 0.25
 autostart = true
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]

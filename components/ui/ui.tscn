@@ -40,6 +40,13 @@ text = "Repair Packs"
 horizontal_alignment = 1
 autowrap_mode = 2
 
+[node name="Label2" type="Label" parent="Margin/Inventory"]
+custom_minimum_size = Vector2(1, 0)
+layout_mode = 2
+text = "Score"
+horizontal_alignment = 1
+autowrap_mode = 2
+
 [node name="TextureRect" type="TextureRect" parent="Margin/Inventory"]
 visible = false
 self_modulate = Color(0.160784, 0.145098, 1, 1)
