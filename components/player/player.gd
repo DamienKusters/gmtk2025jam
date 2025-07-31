@@ -1,11 +1,15 @@
 extends CharacterBody2D
 class_name Player
 
+@onready var game: Game = get_tree().get_current_scene()
+
 signal inventory_repair_packs_updated
 
 const MOVE_SPEED: float = 700
 const REPAIR_SPEED: float = 1
 const INVENTORY_SIZE: int = 3
+
+var alive = true
 
 var inventory_repair_packs: int = 3:
 	set(value):
@@ -23,8 +27,14 @@ func get_repair_speed() -> float:
 
 func get_inventory_size() -> int:
 	return INVENTORY_SIZE
-	
+
+func run_over(car: Car):
+	alive = false
+	game.fail_level.emit()
+
 func _process(delta: float) -> void:
+	if !alive:
+		return
 	_mouse_movement(delta)
 	
 func _mouse_movement(delta: float):
