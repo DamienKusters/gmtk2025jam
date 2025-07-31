@@ -1,0 +1,52 @@
+[gd_scene load_steps=8 format=3 uid="uid://crgk2ttacj2h7"]
+
+[ext_resource type="Texture2D" uid="uid://c65yjn1ljt45i" path="res://components/background/road.png" id="1_7jktm"]
+[ext_resource type="PackedScene" uid="uid://8r031ygdj7iu" path="res://components/player/player.tscn" id="1_e2o6t"]
+[ext_resource type="Script" uid="uid://bwcpcisl74va6" path="res://game.gd" id="1_eow3j"]
+[ext_resource type="PackedScene" uid="uid://bug0tli3hqb5n" path="res://components/ui/ui.tscn" id="1_ryrav"]
+[ext_resource type="PackedScene" uid="uid://8lm0nnj1m6si" path="res://components/car/car.tscn" id="2_ryrav"]
+[ext_resource type="PackedScene" uid="uid://br1cnyi624n11" path="res://components/camera/camera.tscn" id="3_feb5d"]
+
+[sub_resource type="Curve2D" id="Curve2D_eow3j"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 64, -618, 0, 0, 0, 0, -11, -953, 0, 0, 0, 0, -184, -1624, 0, 0, 0, 0, -457, -1807, 0, 0, 0, 0, -713, -1655, 0, 0, 0, 0, -826, -781, 0, 0, 0, 0, -696, 402, 0, 0, 0, 0, -353, 584, 0, 0, 0, 0, 1558, 589, 0, 0, 0, 0, 2018, 352, 0, 0, 0, 0, 2028, -73, 0, 0, 0, 0, 1608, -336, 0, 0, 0, 0, 370, -391, 0, 0, 0, 0, 64, -618)
+}
+point_count = 14
+
+[node name="Game" type="Node2D"]
+script = ExtResource("1_eow3j")
+
+[node name="HoleTick" type="Timer" parent="."]
+autostart = true
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Ui" parent="CanvasLayer" node_paths=PackedStringArray("player") instance=ExtResource("1_ryrav")]
+player = NodePath("../../Player")
+
+[node name="Background" type="Node2D" parent="."]
+metadata/_edit_lock_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="Background"]
+position = Vector2(635, -618)
+scale = Vector2(5.70549, 5.70549)
+texture = ExtResource("1_7jktm")
+metadata/_edit_lock_ = true
+
+[node name="Racetrack" type="Node2D" parent="."]
+
+[node name="CarsPath" type="Path2D" parent="Racetrack"]
+curve = SubResource("Curve2D_eow3j")
+
+[node name="Car" parent="Racetrack/CarsPath" instance=ExtResource("2_ryrav")]
+position = Vector2(64, -618)
+rotation = -1.79105
+
+[node name="Player" parent="." instance=ExtResource("1_e2o6t")]
+
+[node name="Camera2D" parent="." node_paths=PackedStringArray("player") instance=ExtResource("3_feb5d")]
+zoom = Vector2(0.5, 0.5)
+position_smoothing_enabled = true
+player = NodePath("../Player")
+
+[connection signal="timeout" from="HoleTick" to="." method="_on_hole_tick_timeout"]

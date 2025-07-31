@@ -1,0 +1,64 @@
+[gd_scene load_steps=3 format=3 uid="uid://bug0tli3hqb5n"]
+
+[ext_resource type="Texture2D" uid="uid://d3mjwmxiyd57x" path="res://icon.svg" id="1_ufc7s"]
+[ext_resource type="Script" uid="uid://wnqwwp8fuaf8" path="res://components/ui/ui.gd" id="1_wh8a2"]
+
+[node name="Ui" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_wh8a2")
+
+[node name="Margin" type="Control" parent="."]
+layout_mode = 1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 10.0
+offset_top = 10.0
+offset_right = -10.0
+offset_bottom = -10.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Inventory" type="VBoxContainer" parent="Margin"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 0.04
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 10
+
+[node name="Label" type="Label" parent="Margin/Inventory"]
+custom_minimum_size = Vector2(1, 0)
+layout_mode = 2
+text = "Repair Packs"
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="Margin/Inventory"]
+visible = false
+self_modulate = Color(0.160784, 0.145098, 1, 1)
+layout_mode = 2
+texture = ExtResource("1_ufc7s")
+expand_mode = 4
+stretch_mode = 5
+
+[node name="TextureRect2" type="TextureRect" parent="Margin/Inventory"]
+visible = false
+self_modulate = Color(0.160784, 0.145098, 1, 1)
+layout_mode = 2
+texture = ExtResource("1_ufc7s")
+expand_mode = 4
+stretch_mode = 5
+
+[node name="TextureRect3" type="TextureRect" parent="Margin/Inventory"]
+visible = false
+self_modulate = Color(0.160784, 0.145098, 1, 1)
+layout_mode = 2
+texture = ExtResource("1_ufc7s")
+expand_mode = 4
+stretch_mode = 5
