@@ -20,7 +20,7 @@ var holes_patched: int = 0:
 
 var inventory_repair_packs: int = 3:
 	set(value):
-		inventory_repair_packs = value
+		inventory_repair_packs = clampi(value, 0, get_inventory_size())
 		inventory_repair_packs_updated.emit(value)
 
 func _ready() -> void:
@@ -52,11 +52,13 @@ func _mouse_movement(delta: float):
 	move_and_slide()
 
 func _on_area_2d_area_entered(area: Area2D) -> void:
-	if area is Hole:
+	if area is Hole and inventory_repair_packs != 0:
 		focussed_hole = area
 		$RepairTimer.start(focussed_hole.repair_time)
 		$RepairTimerVisualizer.visible = focussed_hole != null
 		_animate_progress()
+	if area is RestockingPoint:
+		inventory_repair_packs = get_inventory_size()
 
 func _on_repair_timer_timeout() -> void:
 	$RepairTimerVisualizer.visible = focussed_hole != null
@@ -65,6 +67,7 @@ func _on_repair_timer_timeout() -> void:
 	focussed_hole.repair_hole()
 	holes_patched += 1
 	$RepairTimerVisualizer.visible = false
+	inventory_repair_packs -= 1
 
 var _tween_progress: Tween
 func _animate_progress():

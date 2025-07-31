@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://crgk2ttacj2h7"]
+[gd_scene load_steps=9 format=3 uid="uid://crgk2ttacj2h7"]
 
 [ext_resource type="Texture2D" uid="uid://c65yjn1ljt45i" path="res://components/background/road.png" id="1_7jktm"]
 [ext_resource type="PackedScene" uid="uid://8r031ygdj7iu" path="res://components/player/player.tscn" id="1_e2o6t"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://bug0tli3hqb5n" path="res://components/ui/ui.tscn" id="1_ryrav"]
 [ext_resource type="PackedScene" uid="uid://8lm0nnj1m6si" path="res://components/car/car.tscn" id="2_ryrav"]
 [ext_resource type="PackedScene" uid="uid://br1cnyi624n11" path="res://components/camera/camera.tscn" id="3_feb5d"]
+[ext_resource type="PackedScene" uid="uid://bqdo21qq0ff6k" path="res://components/restocking_point/restocking_point.tscn" id="5_eow3j"]
 
 [sub_resource type="Curve2D" id="Curve2D_eow3j"]
 _data = {
@@ -42,6 +43,9 @@ curve = SubResource("Curve2D_eow3j")
 [node name="Car" parent="Racetrack/CarsPath" instance=ExtResource("2_ryrav")]
 position = Vector2(64, -618)
 rotation = -1.79105
+
+[node name="RestockingPoint" parent="Racetrack" instance=ExtResource("5_eow3j")]
+position = Vector2(1199, 106)
 
 [node name="Player" parent="." instance=ExtResource("1_e2o6t")]
 
