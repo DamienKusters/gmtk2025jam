@@ -55,9 +55,19 @@ func _on_area_2d_area_entered(area: Area2D) -> void:
 	if area is Hole:
 		focussed_hole = area
 		$RepairTimer.start(focussed_hole.repair_time)
+		$RepairTimerVisualizer.visible = focussed_hole != null
+		_animate_progress()
 
 func _on_repair_timer_timeout() -> void:
+	$RepairTimerVisualizer.visible = focussed_hole != null
 	if focussed_hole == null:
 		return
 	focussed_hole.repair_hole()
 	holes_patched += 1
+	$RepairTimerVisualizer.visible = false
+
+var _tween_progress: Tween
+func _animate_progress():
+	_tween_progress = game.animate(_tween_progress)
+	$RepairTimerVisualizer/TextureProgressBar.value = 0
+	_tween_progress.tween_property($RepairTimerVisualizer/TextureProgressBar, "value", 100, $RepairTimer.wait_time)

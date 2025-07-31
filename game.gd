@@ -28,6 +28,12 @@ func _ready():
 func reset():
 	call_deferred("_reset_deferred")
 
+func animate(tween: Tween):
+	if tween:
+		tween.kill() # Abort the previous animation.
+	tween = create_tween()
+	return tween
+
 func _reset_deferred():
 	get_tree().reload_current_scene()
 
