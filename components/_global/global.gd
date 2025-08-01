@@ -5,6 +5,7 @@ signal player_upgrades_updated
 
 var hole_instance: PackedScene = preload("res://components/hole/hole.tscn")
 var car_instance: PackedScene = preload("res://components/car/car.tscn")
+var car_explosion_instance: PackedScene = preload("res://components/car/crash/crash.tscn")
 
 var hole_textures = [
 	preload("res://components/hole/small.png"),
@@ -36,6 +37,9 @@ func get_hole_instance() -> Hole:
 
 func get_car_instance() -> Car:
 	return car_instance.instantiate()
+
+func get_car_explosion_instance():
+	return car_explosion_instance.instantiate()
 
 func get_hole_textures() -> Array:
 	return hole_textures

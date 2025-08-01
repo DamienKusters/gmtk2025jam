@@ -14,6 +14,10 @@ radius = 90.0
 [node name="Player" type="CharacterBody2D"]
 script = ExtResource("1_kfe3d")
 
+[node name="MonitorTimer" type="Timer" parent="."]
+wait_time = 0.1
+autostart = true
+
 [node name="RepairTimer" type="Timer" parent="."]
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
@@ -51,5 +55,6 @@ nine_patch_stretch = true
 texture_under = ExtResource("3_wa6cj")
 texture_progress = ExtResource("4_mpawu")
 
+[connection signal="timeout" from="MonitorTimer" to="." method="_on_monitor_timer_timeout"]
 [connection signal="timeout" from="RepairTimer" to="." method="_on_repair_timer_timeout"]
 [connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]

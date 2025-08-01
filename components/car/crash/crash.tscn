@@ -1,0 +1,70 @@
+[gd_scene load_steps=15 format=3 uid="uid://c72s0fwls6udd"]
+
+[ext_resource type="Texture2D" uid="uid://b8k6unq8jcmo2" path="res://components/car/crash/Sprites/explosion-d1.png" id="1_0wfqm"]
+[ext_resource type="Texture2D" uid="uid://jptwwi8ha381" path="res://components/car/crash/Sprites/explosion-d2.png" id="2_841ui"]
+[ext_resource type="Texture2D" uid="uid://diymfiiptivem" path="res://components/car/crash/Sprites/explosion-d3.png" id="3_80s36"]
+[ext_resource type="Texture2D" uid="uid://bunqdju0ac4xu" path="res://components/car/crash/Sprites/explosion-d4.png" id="4_ocxlb"]
+[ext_resource type="Texture2D" uid="uid://bua48kmko1aix" path="res://components/car/crash/Sprites/explosion-d5.png" id="5_y48hv"]
+[ext_resource type="Texture2D" uid="uid://lw3illpmtgm6" path="res://components/car/crash/Sprites/explosion-d6.png" id="6_wtnql"]
+[ext_resource type="Texture2D" uid="uid://ct7422u225cft" path="res://components/car/crash/Sprites/explosion-d7.png" id="7_mmdyp"]
+[ext_resource type="Texture2D" uid="uid://dwks1tplfmqdu" path="res://components/car/crash/Sprites/explosion-d8.png" id="8_5r8rj"]
+[ext_resource type="Texture2D" uid="uid://bfq1cb1geqnyt" path="res://components/car/crash/Sprites/explosion-d9.png" id="9_1rhcd"]
+[ext_resource type="Texture2D" uid="uid://b3h5t6nkdcxds" path="res://components/car/crash/Sprites/explosion-d10.png" id="10_70nne"]
+[ext_resource type="Texture2D" uid="uid://cdq5rbn6gdmb3" path="res://components/car/crash/Sprites/explosion-d11.png" id="11_dsg8q"]
+[ext_resource type="Texture2D" uid="uid://cpexu43p32bt8" path="res://components/car/crash/Sprites/explosion-d12.png" id="12_nbgxr"]
+[ext_resource type="Script" uid="uid://dmtnhsgbhdn75" path="res://components/car/crash/crash.gd" id="13_jl3g0"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_uk4g1"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_0wfqm")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_841ui")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_80s36")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_ocxlb")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_y48hv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_wtnql")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_mmdyp")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_5r8rj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_1rhcd")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_70nne")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_dsg8q")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_nbgxr")
+}],
+"loop": true,
+"name": &"default",
+"speed": 13.0
+}]
+
+[node name="Crash" type="AnimatedSprite2D"]
+position = Vector2(0, -56)
+scale = Vector2(1.5, 1.5)
+sprite_frames = SubResource("SpriteFrames_uk4g1")
+autoplay = "default"
+frame_progress = 0.959516
+script = ExtResource("13_jl3g0")
+
+[connection signal="animation_finished" from="." to="." method="_on_animation_finished"]
+[connection signal="animation_looped" from="." to="." method="_on_animation_looped"]

@@ -11,13 +11,15 @@ const MIN_SPEED: float = .07
 const MAX_SPEED: float = .13
 
 const WIDTH_OFFSET: float = 110
-const HOLE_SPAWN_CHANCE = .05 #5%
-const HOLE_DAMAGE_CHANCE = .40 #40%
+const HOLE_SPAWN_CHANCE = .03 #3%
+const HOLE_DAMAGE_CHANCE = .30 #30%
+const HOLE_CRASH_CHANCE = .05 #5%
 const TWEEN_SPEED = 1.5
 
 var move_speed: float = 0
 var width_offset: float = 50.0  # Allow changing later
 var time_accum: float = 0.0     # For smooth motion based on time
+var crashed: bool = false
 var laps_completed: int = 0:
 	set(value):
 		laps_completed = value
@@ -34,6 +36,8 @@ func _process(delta: float) -> void:
 	_previous_progress_ratio = progress_ratio
 
 func spawn_hole_attempt():
+	if crashed:
+		return
 	randomize()
 	if randf_range(0, 1) <= HOLE_SPAWN_CHANCE:
 		spawn_hole()
@@ -46,6 +50,8 @@ func spawn_hole():
 	racetrack.add_hole(i)
 
 func update_behaviour(stop_car = false):
+	if crashed:
+		return
 	if stop_car: # TODO BROKEN
 		_animate_behaviour(0, 0)
 		return
@@ -64,8 +70,18 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 	if body is Player:
 		body.run_over(self)
 
+func _crash():
+	crashed = true
+	var expl = Global.get_car_explosion_instance()
+	expl.position = $Body.global_position
+	get_parent().get_parent().add_child(expl)
+	call_deferred("queue_free")
+
 func _on_area_2d_area_entered(area: Area2D) -> void:
 	if area is Hole and area != last_spawned_hole:
 		randomize()
+		if area.hole_is_max_size() and randf_range(0, 1) <= HOLE_CRASH_CHANCE:
+			_crash()
+			return
 		if randf_range(0, 1) <= HOLE_DAMAGE_CHANCE:
 			area.damage_hole()
