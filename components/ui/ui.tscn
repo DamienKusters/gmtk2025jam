@@ -58,13 +58,28 @@ grow_vertical = 0
 step = 0.1
 
 [node name="Button" type="Button" parent="."]
-layout_mode = 0
-offset_left = 699.0
-offset_top = 9.0
-offset_right = 846.0
-offset_bottom = 63.0
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -205.0
+offset_right = 147.0
+offset_bottom = -151.0
+grow_vertical = 0
 text = "Button of winning
 (+100 cash)"
+
+[node name="Button2" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -113.0
+offset_right = 197.0
+offset_bottom = -59.0
+grow_vertical = 0
+text = "Button of doom
+(delete save file!)"
 
 [node name="ExpectedWins" type="VBoxContainer" parent="."]
 layout_mode = 1
@@ -107,3 +122,4 @@ text = "-??? cars crashed"
 horizontal_alignment = 1
 
 [connection signal="pressed" from="Button" to="." method="_debug_winbutton"]
+[connection signal="pressed" from="Button2" to="." method="_temp_deletesave"]

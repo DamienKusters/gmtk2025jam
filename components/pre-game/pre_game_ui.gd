@@ -38,9 +38,9 @@ func _render_ui(cash: int, player_upgrades):
 	%RepairLabel.text = "Repair: " + str(player_upgrades.repair) + "/" + str(upgrade_map.repair.max_level)
 	%InvLabel.text = "Inventory: " + str(player_upgrades.inventory)
 	
-	%SpeedButton.text = "+ Speed\n- %s cash" % _calculate_price_increase(&"speed", player_upgrades.speed)
-	%RepairButton.text = "+ Repair\n- %s cash" % _calculate_price_increase(&"repair", player_upgrades.repair)
-	%InvButton.text = "+ Inventory\n- %s cash" % _calculate_price_increase(&"inventory", player_upgrades.inventory)
+	%SpeedButton.text = "+ Speed\n- %s cash" % int(_calculate_price_increase(&"speed", player_upgrades.speed))
+	%RepairButton.text = "+ Repair\n- %s cash" % int(_calculate_price_increase(&"repair", player_upgrades.repair))
+	%InvButton.text = "+ Inventory\n- %s cash" % int(_calculate_price_increase(&"inventory", player_upgrades.inventory))
 
 func _calculate_price_increase(id: String, amount_upgraded: int) -> float:
 	# TODO: use current value in price increase? or no?
