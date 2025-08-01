@@ -11,8 +11,8 @@ const MIN_SPEED: float = .07
 const MAX_SPEED: float = .13
 
 const WIDTH_OFFSET: float = 110
-const HOLE_SPAWN_CHANCE = .03 #3%
-const HOLE_DAMAGE_CHANCE = .30 #30%
+const HOLE_SPAWN_CHANCE = .05 #3% # TEST put to .03
+const HOLE_DAMAGE_CHANCE = .4 #30% # TEST put to .3
 const HOLE_CRASH_CHANCE = .05 #5%
 const TWEEN_SPEED = 1.5
 
@@ -46,7 +46,7 @@ var last_spawned_hole: Hole
 func spawn_hole():
 	var i = Global.get_hole_instance()
 	last_spawned_hole = i
-	i.position = position
+	i.position = $Body.global_position
 	racetrack.add_hole(i)
 
 func update_behaviour(stop_car = false):
