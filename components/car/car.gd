@@ -11,8 +11,8 @@ const MIN_SPEED: float = .07
 const MAX_SPEED: float = .13
 
 const WIDTH_OFFSET: float = 110
-const HOLE_SPAWN_CHANCE = .05 #3% # TEST put to .03
-const HOLE_DAMAGE_CHANCE = .4 #30% # TEST put to .3
+const HOLE_SPAWN_CHANCE = .03 #3%
+const HOLE_DAMAGE_CHANCE = .3 #30%
 const HOLE_CRASH_CHANCE = .05 #5%
 const TWEEN_SPEED = 1.5
 
@@ -72,6 +72,7 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 
 func _crash():
 	crashed = true
+	Global.update_ui_expected_earnings.emit()
 	var expl = Global.get_car_explosion_instance()
 	expl.position = $Body.global_position
 	get_parent().get_parent().add_child(expl)

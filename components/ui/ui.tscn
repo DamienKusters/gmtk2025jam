@@ -1,6 +1,5 @@
-[gd_scene load_steps=3 format=3 uid="uid://bug0tli3hqb5n"]
+[gd_scene load_steps=2 format=3 uid="uid://bug0tli3hqb5n"]
 
-[ext_resource type="Texture2D" uid="uid://d3mjwmxiyd57x" path="res://icon.svg" id="1_ufc7s"]
 [ext_resource type="Script" uid="uid://wnqwwp8fuaf8" path="res://components/ui/ui.gd" id="1_wh8a2"]
 
 [node name="Ui" type="Control"]
@@ -47,30 +46,6 @@ text = "Score"
 horizontal_alignment = 1
 autowrap_mode = 2
 
-[node name="TextureRect" type="TextureRect" parent="Margin/Inventory"]
-visible = false
-self_modulate = Color(0.160784, 0.145098, 1, 1)
-layout_mode = 2
-texture = ExtResource("1_ufc7s")
-expand_mode = 4
-stretch_mode = 5
-
-[node name="TextureRect2" type="TextureRect" parent="Margin/Inventory"]
-visible = false
-self_modulate = Color(0.160784, 0.145098, 1, 1)
-layout_mode = 2
-texture = ExtResource("1_ufc7s")
-expand_mode = 4
-stretch_mode = 5
-
-[node name="TextureRect3" type="TextureRect" parent="Margin/Inventory"]
-visible = false
-self_modulate = Color(0.160784, 0.145098, 1, 1)
-layout_mode = 2
-texture = ExtResource("1_ufc7s")
-expand_mode = 4
-stretch_mode = 5
-
 [node name="ProgressBar" type="ProgressBar" parent="."]
 layout_mode = 1
 anchors_preset = 12
@@ -84,11 +59,51 @@ step = 0.1
 
 [node name="Button" type="Button" parent="."]
 layout_mode = 0
-offset_left = 970.0
-offset_top = 37.0
-offset_right = 1117.0
-offset_bottom = 68.0
+offset_left = 699.0
+offset_top = 9.0
+offset_right = 846.0
+offset_bottom = 63.0
 text = "Button of winning
 (+100 cash)"
+
+[node name="ExpectedWins" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -142.0
+offset_bottom = 50.0
+grow_horizontal = 0
+
+[node name="Label" type="Label" parent="ExpectedWins"]
+layout_mode = 2
+text = "Expected earnings
+(on a win)"
+horizontal_alignment = 1
+
+[node name="ExpectedCashLabel" type="Label" parent="ExpectedWins"]
+layout_mode = 2
+text = "??? cash"
+horizontal_alignment = 1
+
+[node name="Label4" type="Label" parent="ExpectedWins"]
+layout_mode = 2
+text = "------------"
+horizontal_alignment = 1
+
+[node name="SalaryLabel" type="Label" parent="ExpectedWins"]
+layout_mode = 2
+text = "+1000 salary"
+horizontal_alignment = 1
+
+[node name="HolesFixedBonusLabel" type="Label" parent="ExpectedWins"]
+layout_mode = 2
+text = "+??? holes fixed"
+horizontal_alignment = 1
+
+[node name="CarsCrashedBonusLabel" type="Label" parent="ExpectedWins"]
+layout_mode = 2
+text = "-??? cars crashed"
+horizontal_alignment = 1
 
 [connection signal="pressed" from="Button" to="." method="_debug_winbutton"]

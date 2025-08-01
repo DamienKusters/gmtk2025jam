@@ -4,7 +4,7 @@ class_name Player
 signal inventory_repair_packs_updated
 signal holes_patched_updated
 
-signal focussed_hole_updated # used in this clas
+signal focussed_hole_updated # used in this class
 
 const MOVE_SPEED: float = 700
 const REPAIR_DELAY: float = 1

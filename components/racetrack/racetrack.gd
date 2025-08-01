@@ -5,9 +5,12 @@ signal current_lap_updated
 
 @export var car_amount: int = 4
 @export var car_cash_bonus: int = 100
+@export var hole_patch_bonus: int = 10
 @export var minimum_completion_cash: int = 100
 @export var total_laps: int = 8 # TEST amount
 @export var demo = false # true if nothing should happen
+
+@export var player: Player # Required to add the amount of fixed holes :(
 
 var race_started = false
 var current_lap: int = 0:
@@ -27,12 +30,14 @@ func _ready():
 		car.progress_ratio = 0
 
 func get_completion_cash() -> int:
-	return minimum_completion_cash + get_car_cash_bonus()
+	var hole_value = player.holes_patched * hole_patch_bonus
+	return minimum_completion_cash + get_car_cash_bonus() + hole_value
 
 func get_car_cash_bonus() -> int:
 	var active_cars = []
 	for car: Car in $CarsPath.get_children():
-		active_cars.append(car)
+		if car.crashed == false:
+			active_cars.append(car)
 	return active_cars.size() * car_cash_bonus
 
 func add_hole(hole: Hole):
@@ -51,6 +56,7 @@ func _car_lap_completed(car: Car):
 var _first_tick = true
 func _on_car_timer_timeout() -> void:
 	if _first_tick:
+		Global.update_ui_expected_earnings.emit()
 		race_started = true
 		_first_tick = false
 	if current_lap == total_laps:

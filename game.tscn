@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://crgk2ttacj2h7"]
+[gd_scene load_steps=6 format=3 uid="uid://crgk2ttacj2h7"]
 
 [ext_resource type="PackedScene" uid="uid://8r031ygdj7iu" path="res://components/player/player.tscn" id="1_e2o6t"]
 [ext_resource type="PackedScene" uid="uid://bug0tli3hqb5n" path="res://components/ui/ui.tscn" id="1_ryrav"]
@@ -6,15 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://24qjy78bw8hb" path="res://components/racetrack/racetrack.tscn" id="4_eow3j"]
 [ext_resource type="PackedScene" uid="uid://bqdo21qq0ff6k" path="res://components/restocking_point/restocking_point.tscn" id="5_eow3j"]
 
-[sub_resource type="GDScript" id="GDScript_7jktm"]
-script/source = "extends Node2D
-class_name Game
-
-# TODO remove
-"
-
 [node name="Game" type="Node2D"]
-script = SubResource("GDScript_7jktm")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
@@ -22,7 +14,8 @@ script = SubResource("GDScript_7jktm")
 player = NodePath("../../Player")
 racetrack = NodePath("../../Racetrack")
 
-[node name="Racetrack" parent="." instance=ExtResource("4_eow3j")]
+[node name="Racetrack" parent="." node_paths=PackedStringArray("player") instance=ExtResource("4_eow3j")]
+player = NodePath("../Player")
 
 [node name="RestockingPoint" parent="." instance=ExtResource("5_eow3j")]
 position = Vector2(1199, 106)

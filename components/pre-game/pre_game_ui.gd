@@ -10,8 +10,8 @@ extends Control
 	&"repair": {
 		&"node": %RepairButton,
 		&"base_value": 100,
-		&"percentage_increase": 2.5,
-		&"max_level": 8,
+		&"percentage_increase": 3.0,
+		&"max_level": 9,
 	},
 	&"inventory": {
 		&"node": %InvButton,
@@ -35,7 +35,7 @@ func _player_upgrades_updated(player_upgrades):
 func _render_ui(cash: int, player_upgrades):
 	%CashLabel.text = "Cash: " + str(cash)
 	%SpeedLabel.text = "Speed: " + str(player_upgrades.speed)
-	%RepairLabel.text = "Repair: " + str(player_upgrades.repair)
+	%RepairLabel.text = "Repair: " + str(player_upgrades.repair) + "/" + str(upgrade_map.repair.max_level)
 	%InvLabel.text = "Inventory: " + str(player_upgrades.inventory)
 	
 	%SpeedButton.text = "+ Speed\n- %s cash" % _calculate_price_increase(&"speed", player_upgrades.speed)

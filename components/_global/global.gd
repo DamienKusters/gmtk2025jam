@@ -4,6 +4,7 @@ extends Node
 
 signal cash_updated
 signal player_upgrades_updated
+signal update_ui_expected_earnings
 
 var hole_instance: PackedScene = preload("res://components/hole/hole.tscn")
 var car_instance: PackedScene = preload("res://components/car/car.tscn")
