@@ -9,6 +9,9 @@ signal update_ui_expected_earnings
 var hole_instance: PackedScene = preload("res://components/hole/hole.tscn")
 var car_instance: PackedScene = preload("res://components/car/car.tscn")
 var car_explosion_instance: PackedScene = preload("res://components/car/crash/crash.tscn")
+var pin_instance: PackedScene = preload("res://components/pre-game/pin/pin.tscn")
+var restocking_point_instance: PackedScene = preload("res://components/restocking_point/restocking_point.tscn")
+var restocking_coords = []# Read by Game
 
 var hole_textures = [
 	preload("res://components/hole/small.png"),
@@ -43,6 +46,12 @@ func get_car_instance() -> Car:
 
 func get_car_explosion_instance():
 	return car_explosion_instance.instantiate()
+	
+func get_pin_instance():
+	return pin_instance.instantiate()
+
+func get_restocking_point_instance():
+	return restocking_point_instance.instantiate()
 
 func get_hole_textures() -> Array:
 	return hole_textures

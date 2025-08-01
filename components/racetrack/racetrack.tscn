@@ -1,10 +1,9 @@
-[gd_scene load_steps=9 format=4 uid="uid://24qjy78bw8hb"]
+[gd_scene load_steps=8 format=4 uid="uid://24qjy78bw8hb"]
 
 [ext_resource type="Script" uid="uid://bi8bq5mpmnioy" path="res://components/racetrack/racetrack.gd" id="1_fkuc5"]
 [ext_resource type="Texture2D" uid="uid://dfpys6fcy4uhx" path="res://components/racetrack/grass.png" id="2_7xh53"]
 [ext_resource type="Texture2D" uid="uid://di6dlkk0i4sqi" path="res://components/racetrack/track_B.png" id="2_fkuc5"]
 [ext_resource type="Texture2D" uid="uid://cd6w33wm6xsbg" path="res://components/racetrack/finish.png" id="4_670wl"]
-[ext_resource type="PackedScene" uid="uid://uqxtdcyag4ac" path="res://components/hole/hole.tscn" id="5_guyig"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_670wl"]
 texture = ExtResource("2_7xh53")
@@ -50,10 +49,6 @@ scale = Vector2(3.19556, 3.19556)
 texture = ExtResource("4_670wl")
 
 [node name="Holes" type="Node2D" parent="."]
-
-[node name="Hole" parent="Holes" instance=ExtResource("5_guyig")]
-position = Vector2(365, 200)
-hole_size = 3
 
 [node name="CarsPath" type="Path2D" parent="."]
 curve = SubResource("Curve2D_eow3j")

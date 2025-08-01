@@ -21,10 +21,15 @@ extends Control
 	},
 }
 
+const COST_RESTOCKING = 25
+
+var placed_restocking_pins = 0
+
 func _ready():
 	Global.cash_updated.connect(_cash_updated)
 	Global.player_upgrades_updated.connect(_player_upgrades_updated)
 	_render_ui(Global.cash, Global.player_upgrades)
+	update_restock_cost()
 
 func _cash_updated(cash: int):
 	_render_ui(cash, Global.player_upgrades)
@@ -55,5 +60,33 @@ func upgrade_bought(id: String):
 		Global.player_upgrades[id] += 1
 		Global.player_upgrades = Global.player_upgrades # Cringe way to trigger event :)
 
+func update_restock_cost():
+	var cost = _calculate_cost_of_restock_count(placed_restocking_pins)
+	%RestockPriceLabel.text = "Cost of next point: " + str(cost if cost != 0 else "FREE")
+
+func _calculate_cost_of_restock_count(amount_of_points: int) -> int:
+	if amount_of_points == 0:
+		return 0
+	return pow(COST_RESTOCKING, amount_of_points)
+
 func _on_start_button_pressed() -> void:
+	var restocking_coords = []
+	for child in %RestockingPoints.get_children():
+		restocking_coords.append(child.global_position)
+	Global.restocking_coords = restocking_coords
 	Global.load_game()
+
+func _on_gui_input(event: InputEvent) -> void:
+	if event.is_action_pressed("mouse_down"):
+		var i = Global.get_pin_instance()
+		var camera = $"../../Camera2D"
+		i.position = camera.get_global_mouse_position()
+		%RestockingPoints.add_child(i)
+		placed_restocking_pins += 1
+		update_restock_cost()
+
+func _on_reset_restocking_button_pressed() -> void:
+	for child in %RestockingPoints.get_children():
+		child.call_deferred("queue_free")
+	placed_restocking_pins = 0
+	update_restock_cost()

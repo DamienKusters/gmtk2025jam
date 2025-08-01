@@ -14,6 +14,8 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 1
+mouse_default_cursor_shape = 2
 script = ExtResource("1_5e81d")
 
 [node name="BottomBar" type="VBoxContainer" parent="CanvasLayer/PreGame"]
@@ -25,6 +27,7 @@ anchor_bottom = 1.0
 offset_top = -120.0
 grow_horizontal = 2
 grow_vertical = 0
+mouse_filter = 0
 theme_override_constants/separation = 10
 
 [node name="Top" type="HBoxContainer" parent="CanvasLayer/PreGame/BottomBar"]
@@ -136,8 +139,25 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-text = "Click on the map to buy/add restocking points (- 5 cash each)"
+text = "Click on the map to buy/add restocking points (cost scales)"
 autowrap_mode = 2
+
+[node name="RestockPriceLabel" type="Label" parent="CanvasLayer/PreGame/BottomBar/Bot/Panel"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Cost of next point: 00"
+vertical_alignment = 2
+autowrap_mode = 2
+
+[node name="ResetRestockingButton" type="Button" parent="CanvasLayer/PreGame/BottomBar/Bot"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Reset restocking points"
 
 [node name="Padding" type="Control" parent="CanvasLayer/PreGame/BottomBar/Bot"]
 layout_mode = 2
@@ -153,11 +173,16 @@ RACE"
 car_amount = 0
 demo = true
 
+[node name="RestockingPoints" type="Node2D" parent="."]
+unique_name_in_owner = true
+
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(537, -24)
 zoom = Vector2(0.185, 0.185)
 
+[connection signal="gui_input" from="CanvasLayer/PreGame" to="CanvasLayer/PreGame" method="_on_gui_input"]
 [connection signal="pressed" from="CanvasLayer/PreGame/BottomBar/Bot/SpeedButton" to="CanvasLayer/PreGame" method="upgrade_bought" binds= [&"speed"]]
 [connection signal="pressed" from="CanvasLayer/PreGame/BottomBar/Bot/RepairButton" to="CanvasLayer/PreGame" method="upgrade_bought" binds= [&"repair"]]
 [connection signal="pressed" from="CanvasLayer/PreGame/BottomBar/Bot/InvButton" to="CanvasLayer/PreGame" method="upgrade_bought" binds= [&"inventory"]]
+[connection signal="pressed" from="CanvasLayer/PreGame/BottomBar/Bot/ResetRestockingButton" to="CanvasLayer/PreGame" method="_on_reset_restocking_button_pressed"]
 [connection signal="pressed" from="CanvasLayer/PreGame/BottomBar/Bot/StartButton" to="CanvasLayer/PreGame" method="_on_start_button_pressed"]
