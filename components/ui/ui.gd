@@ -23,3 +23,6 @@ var _tween_progress: Tween
 func _animate_progress(value):
 	_tween_progress = Global.animate(_tween_progress)
 	_tween_progress.tween_property($ProgressBar, "value", value, 10)
+
+func _debug_winbutton() -> void:
+	Global.complete_level(100)

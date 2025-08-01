@@ -4,17 +4,20 @@ extends Control
 	&"speed": {
 		&"node": %SpeedButton,
 		&"base_value": 100,
-		&"percentage_increase": 1.5,
+		&"percentage_increase": .5,
+		&"max_level": 100,
 	},
 	&"repair": {
 		&"node": %RepairButton,
 		&"base_value": 100,
-		&"percentage_increase": 1.5,
+		&"percentage_increase": 2.5,
+		&"max_level": 8,
 	},
 	&"inventory": {
 		&"node": %InvButton,
 		&"base_value": 100,
 		&"percentage_increase": 1.5,
+		&"max_level": 100,
 	},
 }
 
@@ -44,9 +47,13 @@ func _calculate_price_increase(id: String, amount_upgraded: int) -> float:
 	var added_value = (upgrade_map[id].base_value * amount_upgraded) * upgrade_map[id].percentage_increase
 	return float(upgrade_map[id].base_value) + added_value
 
+# this is the worst function in the game
 func upgrade_bought(id: String):
-	Global.player_upgrades[id] += 1
-	Global.player_upgrades = Global.player_upgrades # Cringe way to trigger event :)
+	var price = _calculate_price_increase(id, Global.player_upgrades[id])
+	if Global.player_upgrades[id] < upgrade_map[id].max_level and Global.cash >= price:
+		Global.cash -= price
+		Global.player_upgrades[id] += 1
+		Global.player_upgrades = Global.player_upgrades # Cringe way to trigger event :)
 
 func _on_start_button_pressed() -> void:
 	Global.load_game()

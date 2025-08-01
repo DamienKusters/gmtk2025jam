@@ -151,6 +151,7 @@ RACE"
 
 [node name="Racetrack" parent="." instance=ExtResource("1_bbs4h")]
 car_amount = 0
+demo = true
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(537, -24)

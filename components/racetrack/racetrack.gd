@@ -7,6 +7,7 @@ signal current_lap_updated
 @export var car_cash_bonus: int = 100
 @export var minimum_completion_cash: int = 100
 @export var total_laps: int = 8 # TEST amount
+@export var demo = false # true if nothing should happen
 
 var race_started = false
 var current_lap: int = 0:
@@ -15,6 +16,9 @@ var current_lap: int = 0:
 		current_lap_updated.emit(value)
 
 func _ready():
+	if demo:
+		$CarTimer.stop()
+		$HoleTimer.stop()
 	for c in car_amount:
 		var car = Global.get_car_instance()
 		car.racetrack = self
@@ -49,10 +53,14 @@ func _on_car_timer_timeout() -> void:
 	if _first_tick:
 		race_started = true
 		_first_tick = false
+	if current_lap == total_laps:
+		Global.complete_level(get_completion_cash())
 	if !race_started:
 		return
 	for car: Car in $CarsPath.get_children():
 		car.update_behaviour()
+	if $CarsPath.get_children().size() == 0:
+		Global.fail_level()
 
 func _on_hole_timer_timeout() -> void:
 	if !race_started:

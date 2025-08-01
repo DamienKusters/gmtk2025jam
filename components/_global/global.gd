@@ -1,5 +1,7 @@
 extends Node
 
+@onready var save: Save = $Save
+
 signal cash_updated
 signal player_upgrades_updated
 
@@ -50,11 +52,31 @@ func animate(tween: Tween):
 	tween = create_tween()
 	return tween
 
-func complete_level():
-	call_deferred("_reset_deferred")
+func _ready():
+	save.load_file()
+	_previous_player_upgrades = {
+		"speed": int(save.get_float("speed")),
+		"repair": int(save.get_float("repair")),
+		"inventory": int(save.get_float("inventory")),
+	}
+	_previous_cash = int(save.get_float("cash"))
+	
+	# First load
+	player_upgrades = _previous_player_upgrades.duplicate()
+	cash = _previous_cash
+
+func complete_level(cash_reward: int):
+	_previous_player_upgrades = player_upgrades.duplicate()
+	_previous_cash = cash + cash_reward
+	cash = _previous_cash # set cash
+	_save_save_file()
+	load_game("res://components/pre-game/pre_game.tscn")
 
 func fail_level():
 	load_game("res://components/pre-game/pre_game.tscn")
+	player_upgrades = _previous_player_upgrades.duplicate()
+	cash = _previous_cash
+	#_save_save_file() # Level failed, no saving needed
 
 func load_game(scene: String = "res://game.tscn"):
 	call_deferred("_load_game", scene)
@@ -64,3 +86,13 @@ func _reset_deferred():
 	
 func _load_game(scene):
 	get_tree().change_scene_to_file(scene)
+
+func _load_save_file():
+	pass
+
+func _save_save_file():
+	save.set_float("cash", cash)
+	save.set_float("speed", _previous_player_upgrades.speed)
+	save.set_float("repair", _previous_player_upgrades.repair)
+	save.set_float("inventory", _previous_player_upgrades.inventory)
+	save.save_file()

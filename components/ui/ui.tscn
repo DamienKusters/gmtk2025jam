@@ -81,3 +81,14 @@ offset_top = -27.0
 grow_horizontal = 2
 grow_vertical = 0
 step = 0.1
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 0
+offset_left = 970.0
+offset_top = 37.0
+offset_right = 1117.0
+offset_bottom = 68.0
+text = "Button of winning
+(+100 cash)"
+
+[connection signal="pressed" from="Button" to="." method="_debug_winbutton"]
