@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c65yjn1ljt45i"
-path="res://.godot/imported/road.png-c2a6bf72e4b7fbb5631be62e9b3b2bb1.ctex"
+uid="uid://dfpys6fcy4uhx"
+path="res://.godot/imported/grass.png-f1693b66f09d92b6407035670acc7b53.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://components/background/road.png"
-dest_files=["res://.godot/imported/road.png-c2a6bf72e4b7fbb5631be62e9b3b2bb1.ctex"]
+source_file="res://components/racetrack/grass.png"
+dest_files=["res://.godot/imported/grass.png-f1693b66f09d92b6407035670acc7b53.ctex"]
 
 [params]
 

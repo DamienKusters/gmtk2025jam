@@ -1,14 +1,12 @@
 extends CharacterBody2D
 class_name Player
 
-@onready var game: Game = get_tree().get_current_scene()
-
 signal inventory_repair_packs_updated
 signal holes_patched_updated
 
 const MOVE_SPEED: float = 700
-const REPAIR_SPEED: float = 1
-const INVENTORY_SIZE: int = 3
+const REPAIR_DELAY: float = 1
+const INVENTORY_SIZE: int = 4
 
 var alive = true
 
@@ -24,20 +22,21 @@ var inventory_repair_packs: int = 3:
 		inventory_repair_packs_updated.emit(value)
 
 func _ready() -> void:
-	inventory_repair_packs = INVENTORY_SIZE
+	inventory_repair_packs = get_inventory_size()
 
 func get_move_speed() -> float:
-	return MOVE_SPEED
+	return MOVE_SPEED + (280 * Global.player_upgrades.speed)
 
-func get_repair_speed() -> float:
-	return REPAIR_SPEED
+func get_repair_delay() -> float:
+	return REPAIR_DELAY - clampi((.1 * Global.player_upgrades.repair), 0, .7) # TEST CLAMP
 
 func get_inventory_size() -> int:
-	return INVENTORY_SIZE
+	return INVENTORY_SIZE + Global.player_upgrades.inventory
 
 func run_over(car: Car):
-	alive = false
-	game.fail_level.emit()
+	if alive == true:
+		alive = false
+		Global.fail_level()
 
 func _process(delta: float) -> void:
 	if !alive:
@@ -54,7 +53,7 @@ func _mouse_movement(delta: float):
 func _on_area_2d_area_entered(area: Area2D) -> void:
 	if area is Hole and inventory_repair_packs != 0:
 		focussed_hole = area
-		$RepairTimer.start(focussed_hole.repair_time)
+		$RepairTimer.start(get_repair_delay())
 		$RepairTimerVisualizer.visible = focussed_hole != null
 		_animate_progress()
 	if area is RestockingPoint:
@@ -71,6 +70,6 @@ func _on_repair_timer_timeout() -> void:
 
 var _tween_progress: Tween
 func _animate_progress():
-	_tween_progress = game.animate(_tween_progress)
+	_tween_progress = Global.animate(_tween_progress)
 	$RepairTimerVisualizer/TextureProgressBar.value = 0
-	_tween_progress.tween_property($RepairTimerVisualizer/TextureProgressBar, "value", 100, $RepairTimer.wait_time)
+	_tween_progress.tween_property($RepairTimerVisualizer/TextureProgressBar, "value", 100, get_repair_delay())
