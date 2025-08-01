@@ -1,7 +1,15 @@
-[gd_scene load_steps=4 format=3 uid="uid://8lm0nnj1m6si"]
+[gd_scene load_steps=7 format=3 uid="uid://8lm0nnj1m6si"]
 
 [ext_resource type="Script" uid="uid://cocty0w0iepgu" path="res://components/car/car.gd" id="1_55tl6"]
+[ext_resource type="Texture2D" uid="uid://co4kdc1o6axli" path="res://components/car/smoke.png" id="2_03mx4"]
 [ext_resource type="Texture2D" uid="uid://bnwt3adheohqt" path="res://components/car/Car.png" id="2_188xc"]
+
+[sub_resource type="Curve" id="Curve_wq8g5"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Gradient" id="Gradient_03mx4"]
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_188xc"]
 size = Vector2(142, 92)
@@ -10,6 +18,18 @@ size = Vector2(142, 92)
 script = ExtResource("1_55tl6")
 
 [node name="Body" type="Node2D" parent="."]
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="Body"]
+position = Vector2(-76, 21)
+amount = 10
+texture = ExtResource("2_03mx4")
+lifetime = 1.5
+gravity = Vector2(0, -200)
+angular_velocity_min = -100.0
+angular_velocity_max = 100.0
+scale_amount_curve = SubResource("Curve_wq8g5")
+color = Color(0.505882, 0.505882, 0.505882, 0.243137)
+color_ramp = SubResource("Gradient_03mx4")
 
 [node name="Area2D" type="Area2D" parent="Body"]
 monitorable = false
