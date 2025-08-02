@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://babkyi6noh1qh"]
+[gd_scene load_steps=15 format=3 uid="uid://babkyi6noh1qh"]
 
 [ext_resource type="Texture2D" uid="uid://cngmgwi05fvks" path="res://components/ui/panel_nine_patch.png" id="1_7xoae"]
 [ext_resource type="Script" uid="uid://c7pymt0wsyd8h" path="res://components/main_menu/main_menu.gd" id="1_qpshq"]
@@ -9,6 +9,14 @@
 [ext_resource type="Texture2D" uid="uid://bd30loy2jw4ra" path="res://components/main_menu/menu_arm.png" id="4_qpshq"]
 [ext_resource type="Texture2D" uid="uid://dj2cdh5lmw2bv" path="res://components/car/race_car_4.png" id="7_bkayj"]
 [ext_resource type="PackedScene" uid="uid://24qjy78bw8hb" path="res://components/racetrack/racetrack.tscn" id="7_eakp8"]
+
+[sub_resource type="Gradient" id="Gradient_bkayj"]
+offsets = PackedFloat32Array(0.538961, 1)
+colors = PackedColorArray(0.0928, 0.217693, 0.29, 0.588235, 0.0928, 0.217693, 0.29, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_7oyqf"]
+gradient = SubResource("Gradient_bkayj")
+fill_to = Vector2(0, 1)
 
 [sub_resource type="Animation" id="Animation_eakp8"]
 length = 0.001
@@ -53,6 +61,14 @@ _data = {
 script = ExtResource("1_qpshq")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="TextureRect3" type="TextureRect" parent="CanvasLayer"]
+self_modulate = Color(1, 1, 1, 0.647059)
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 383.0
+grow_horizontal = 2
+texture = SubResource("GradientTexture2D_7oyqf")
 
 [node name="TextureRect2" type="TextureRect" parent="CanvasLayer"]
 anchors_preset = 5
@@ -173,7 +189,9 @@ Music by: Jochem van Hout
 
 Car explosion: ansimuz.itch.io
 
-Sound effects: jsfxr (sfxr.me)"
+Sound effects: jsfxr (sfxr.me)
+
+Special thanks: Jurjen Verbruggen"
 
 [node name="Credits2" type="Label" parent="CanvasLayer/Control"]
 layout_mode = 1

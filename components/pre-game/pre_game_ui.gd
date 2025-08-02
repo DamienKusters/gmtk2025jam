@@ -85,7 +85,7 @@ func _on_start_button_pressed() -> void:
 	Global.load_game()
 
 func _on_gui_input(event: InputEvent) -> void:
-	if event.is_action_pressed("mouse_down"):
+	if event.is_action_pressed("mouse_down") && placed_restocking_pins <= 10:
 		var i = Global.get_pin_instance()
 		var camera = $"../../Camera2D"
 		i.position = camera.get_global_mouse_position()

@@ -1,7 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://bf4vt234fvtpp"]
+[gd_scene load_steps=7 format=3 uid="uid://bf4vt234fvtpp"]
 
 [ext_resource type="Script" uid="uid://b6fihh5ww34p" path="res://components/pre-game/pre_game_ui.gd" id="1_5e81d"]
 [ext_resource type="PackedScene" uid="uid://24qjy78bw8hb" path="res://components/racetrack/racetrack.tscn" id="1_bbs4h"]
+[ext_resource type="Texture2D" uid="uid://cngmgwi05fvks" path="res://components/ui/panel_nine_patch.png" id="2_5k1dc"]
 [ext_resource type="Texture2D" uid="uid://b1u3h6f64a3ws" path="res://components/ui/panel_nine_patch_full_corners.png" id="2_ex6td"]
 [ext_resource type="PackedScene" uid="uid://c0c54hoas1p1n" path="res://components/pre-game/popup/popup.tscn" id="2_tw0f8"]
 [ext_resource type="Texture2D" uid="uid://cpqd4au6vnya" path="res://components/ui/panel_nine_patch_full_corners_filled.png" id="3_5k1dc"]
@@ -20,6 +21,37 @@ grow_vertical = 2
 mouse_filter = 1
 mouse_default_cursor_shape = 2
 script = ExtResource("1_5e81d")
+
+[node name="Background3" type="NinePatchRect" parent="CanvasLayer/PreGame"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -176.0
+offset_top = -31.0
+offset_right = 176.0
+offset_bottom = 70.0
+grow_horizontal = 2
+mouse_filter = 0
+texture = ExtResource("2_5k1dc")
+region_rect = Rect2(0, 0, 139, 138)
+patch_margin_left = 30
+patch_margin_top = 29
+patch_margin_right = 30
+patch_margin_bottom = 30
+
+[node name="Label" type="Label" parent="CanvasLayer/PreGame/Background3"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_bottom = -10.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 37
+text = "Place Toolboxes"
+horizontal_alignment = 1
+vertical_alignment = 2
 
 [node name="Background2" type="NinePatchRect" parent="CanvasLayer/PreGame"]
 layout_mode = 1
@@ -82,7 +114,7 @@ layout_mode = 2
 theme_override_constants/separation = 10
 
 [node name="Panel2" type="Panel" parent="CanvasLayer/PreGame/Content/BottomBar/Top"]
-self_modulate = Color(1, 1, 1, 0.498039)
+self_modulate = Color(1, 1, 1, 0)
 custom_minimum_size = Vector2(150, 0)
 layout_mode = 2
 
@@ -100,7 +132,7 @@ vertical_alignment = 1
 autowrap_mode = 2
 
 [node name="Panel3" type="Panel" parent="CanvasLayer/PreGame/Content/BottomBar/Top"]
-self_modulate = Color(1, 1, 1, 0.498039)
+self_modulate = Color(1, 1, 1, 0)
 custom_minimum_size = Vector2(110, 0)
 layout_mode = 2
 
@@ -118,7 +150,7 @@ vertical_alignment = 1
 autowrap_mode = 2
 
 [node name="Panel4" type="Panel" parent="CanvasLayer/PreGame/Content/BottomBar/Top"]
-self_modulate = Color(1, 1, 1, 0.498039)
+self_modulate = Color(1, 1, 1, 0)
 custom_minimum_size = Vector2(110, 0)
 layout_mode = 2
 
@@ -136,7 +168,7 @@ vertical_alignment = 1
 autowrap_mode = 2
 
 [node name="Panel5" type="Panel" parent="CanvasLayer/PreGame/Content/BottomBar/Top"]
-self_modulate = Color(1, 1, 1, 0.498039)
+self_modulate = Color(1, 1, 1, 0)
 custom_minimum_size = Vector2(110, 0)
 layout_mode = 2
 
@@ -154,7 +186,7 @@ vertical_alignment = 1
 autowrap_mode = 2
 
 [node name="Panel6" type="Panel" parent="CanvasLayer/PreGame/Content/BottomBar/Top"]
-self_modulate = Color(1, 1, 1, 0.498039)
+self_modulate = Color(1, 1, 1, 0)
 custom_minimum_size = Vector2(250, 0)
 layout_mode = 2
 
@@ -186,7 +218,7 @@ theme_override_constants/separation = 10
 unique_name_in_owner = true
 custom_minimum_size = Vector2(150, 0)
 layout_mode = 2
-text = "< Main Menu"
+text = "Main Menu"
 
 [node name="SpeedButton" type="Button" parent="CanvasLayer/PreGame/Content/BottomBar/Bot"]
 unique_name_in_owner = true
