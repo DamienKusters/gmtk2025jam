@@ -20,6 +20,13 @@ var hole_textures = [
 	preload("res://components/hole/large.png"),
 ]
 
+var car_textures = [
+	preload("res://components/car/race_car_1.png"),
+	preload("res://components/car/race_car_2.png"),
+	preload("res://components/car/race_car_3.png"),
+	preload("res://components/car/race_car_4.png"),
+]
+
 # Save file
 var cash: int = 25:
 	set(value):

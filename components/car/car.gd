@@ -6,6 +6,7 @@ signal laps_completed_updated
 @onready var path: Path2D
 
 @export var racetrack: Racetrack # filled by Racetrack scene
+@export var texture: Texture2D
 
 const MIN_SPEED: float = .07
 const MAX_SPEED: float = .13
@@ -27,6 +28,9 @@ var laps_completed: int = 0:
 
 func get_width_offset() -> float:
 	return WIDTH_OFFSET
+
+func _ready():
+	$Body/Sprite2D.texture = texture
 
 var _previous_progress_ratio = 0
 func _process(delta: float) -> void:

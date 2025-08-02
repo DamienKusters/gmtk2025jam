@@ -25,6 +25,7 @@ func _ready():
 	for c in car_amount:
 		var car = Global.get_car_instance()
 		car.racetrack = self
+		car.texture = Global.car_textures[fposmod(c, Global.car_textures.size())]
 		car.laps_completed_updated.connect(func(_x): _car_lap_completed(car))
 		$CarsPath.add_child(car)
 		car.progress_ratio = 0

@@ -6,6 +6,9 @@ signal holes_patched_updated
 
 signal focussed_hole_updated # used in this class
 
+@onready var animation: AnimatedPlayer = $AnimatedSprite2D
+const UP_DOWN_MARGIN = 200
+
 const MOVE_SPEED: float = 700
 const REPAIR_DELAY: float = 1
 const INVENTORY_SIZE: int = 4
@@ -43,7 +46,7 @@ func get_repair_delay() -> float:
 func get_inventory_size() -> int:
 	return INVENTORY_SIZE + Global.player_upgrades.inventory
 
-func run_over(car: Car):
+func run_over(_car: Car):
 	if alive == true:
 		alive = false
 		Global.fail_level()
@@ -66,11 +69,26 @@ func _focus_hole():
 		focussed_hole = selected_hole
 
 func _mouse_movement(delta: float):
+	var mouse_position = get_global_mouse_position()
+	animation.moving = Input.is_action_pressed("mouse_down")
+	animation.direction = _calculate_movement_direction(position, mouse_position)
 	if !Input.is_action_pressed("mouse_down"):
 			return
-	var mouse_position = get_global_mouse_position()
 	position += position.direction_to(mouse_position) * get_move_speed() * delta
 	move_and_slide()
+
+func _calculate_movement_direction(player_position: Vector2, mouse_position: Vector2) -> AnimatedPlayer.Direction:
+	if player_position.y < mouse_position.y: # UP, LEFT OR RIGHT
+		return __calculate_left_right_animation(player_position, mouse_position, AnimatedPlayer.Direction.DOWN)
+	else: # DOWN, LEFT OR RIGHT
+		return __calculate_left_right_animation(player_position, mouse_position, AnimatedPlayer.Direction.UP)
+
+func __calculate_left_right_animation(player_position: Vector2, mouse_position: Vector2, default: AnimatedPlayer.Direction) -> AnimatedPlayer.Direction:
+	if (player_position.x + UP_DOWN_MARGIN) < mouse_position.x:
+		return AnimatedPlayer.Direction.RIGHT
+	if (player_position.x - UP_DOWN_MARGIN) > mouse_position.x:
+		return AnimatedPlayer.Direction.LEFT
+	return default
 
 func _switch_hole_focus(hole: Hole):
 	$RepairTimerVisualizer.visible = hole != null
