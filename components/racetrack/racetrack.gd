@@ -5,6 +5,7 @@ signal current_lap_updated
 
 @export var car_amount: int = 4
 @export var car_cash_bonus: int = 100
+@export var car_difficulty: int = 0 # TODO currently this is controlled in the _ready function!!!!
 @export var hole_patch_bonus: int = 10
 @export var minimum_completion_cash: int = 100
 @export var total_laps: int = 8 # TEST amount
@@ -22,6 +23,8 @@ func _ready():
 	if demo:
 		$CarTimer.stop()
 		$HoleTimer.stop()
+	car_difficulty = Global.calculate_difficulty_based_on_upgrade_count()
+	print("Difficulty: " + str(car_difficulty))
 	for c in car_amount:
 		var car = Global.get_car_instance()
 		car.racetrack = self

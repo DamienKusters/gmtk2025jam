@@ -6,7 +6,7 @@ func _ready():
 
 func show_message(message: String):
 	visible = true
-	$Label.text = message
+	%Label.text = message
 
 func _on_button_pressed() -> void:
 	visible = false

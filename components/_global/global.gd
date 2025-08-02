@@ -63,6 +63,13 @@ func get_restocking_point_instance():
 func get_hole_textures() -> Array:
 	return hole_textures
 
+func calculate_difficulty_based_on_upgrade_count() -> int:
+	var total_upgrades = 0
+	for key in player_upgrades.values():
+		total_upgrades += key
+	#every 3 upgrades 1 difficulty
+	return floor(total_upgrades / 3)
+
 func animate(tween: Tween):
 	if tween:
 		tween.kill() # Abort the previous animation.

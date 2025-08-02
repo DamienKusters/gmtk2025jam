@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://bf4vt234fvtpp"]
+[gd_scene load_steps=5 format=3 uid="uid://bf4vt234fvtpp"]
 
 [ext_resource type="Script" uid="uid://b6fihh5ww34p" path="res://components/pre-game/pre_game_ui.gd" id="1_5e81d"]
 [ext_resource type="PackedScene" uid="uid://24qjy78bw8hb" path="res://components/racetrack/racetrack.tscn" id="1_bbs4h"]
 [ext_resource type="PackedScene" uid="uid://c0c54hoas1p1n" path="res://components/pre-game/popup/popup.tscn" id="2_tw0f8"]
+[ext_resource type="Texture2D" uid="uid://cngmgwi05fvks" path="res://components/ui/panel_nine_patch.png" id="2_wxogy"]
 
 [node name="PreGame" type="Node"]
 
@@ -19,29 +20,57 @@ mouse_filter = 1
 mouse_default_cursor_shape = 2
 script = ExtResource("1_5e81d")
 
-[node name="BottomBar" type="VBoxContainer" parent="CanvasLayer/PreGame"]
+[node name="Background" type="NinePatchRect" parent="CanvasLayer/PreGame"]
 layout_mode = 1
 anchors_preset = -1
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
 offset_top = -120.0
+offset_bottom = 50.0
 grow_horizontal = 2
 grow_vertical = 0
-mouse_filter = 0
-theme_override_constants/separation = 10
+texture = ExtResource("2_wxogy")
+region_rect = Rect2(0, 0, 139, 138)
+patch_margin_left = 30
+patch_margin_top = 29
+patch_margin_right = 30
+patch_margin_bottom = 30
 
-[node name="Top" type="HBoxContainer" parent="CanvasLayer/PreGame/BottomBar"]
+[node name="Content" type="Control" parent="CanvasLayer/PreGame"]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 20.0
+offset_top = -100.0
+offset_right = -20.0
+offset_bottom = -5.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="BottomBar" type="VBoxContainer" parent="CanvasLayer/PreGame/Content"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 0
+theme_override_constants/separation = 5
+
+[node name="Top" type="HBoxContainer" parent="CanvasLayer/PreGame/Content/BottomBar"]
 custom_minimum_size = Vector2(0, 30)
 layout_mode = 2
 theme_override_constants/separation = 10
 
-[node name="Panel2" type="Panel" parent="CanvasLayer/PreGame/BottomBar/Top"]
+[node name="Panel2" type="Panel" parent="CanvasLayer/PreGame/Content/BottomBar/Top"]
 self_modulate = Color(1, 1, 1, 0.498039)
-custom_minimum_size = Vector2(100, 0)
+custom_minimum_size = Vector2(110, 0)
 layout_mode = 2
 
-[node name="CashLabel" type="Label" parent="CanvasLayer/PreGame/BottomBar/Top/Panel2"]
+[node name="CashLabel" type="Label" parent="CanvasLayer/PreGame/Content/BottomBar/Top/Panel2"]
 unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = 15
@@ -49,16 +78,17 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-text = "Cash: 000"
+text = "Cash: 00"
+horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 2
 
-[node name="Panel3" type="Panel" parent="CanvasLayer/PreGame/BottomBar/Top"]
+[node name="Panel3" type="Panel" parent="CanvasLayer/PreGame/Content/BottomBar/Top"]
 self_modulate = Color(1, 1, 1, 0.498039)
-custom_minimum_size = Vector2(90, 0)
+custom_minimum_size = Vector2(110, 0)
 layout_mode = 2
 
-[node name="SpeedLabel" type="Label" parent="CanvasLayer/PreGame/BottomBar/Top/Panel3"]
+[node name="SpeedLabel" type="Label" parent="CanvasLayer/PreGame/Content/BottomBar/Top/Panel3"]
 unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = 15
@@ -67,15 +97,16 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 text = "Speed: 00"
+horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 2
 
-[node name="Panel4" type="Panel" parent="CanvasLayer/PreGame/BottomBar/Top"]
+[node name="Panel4" type="Panel" parent="CanvasLayer/PreGame/Content/BottomBar/Top"]
 self_modulate = Color(1, 1, 1, 0.498039)
-custom_minimum_size = Vector2(90, 0)
+custom_minimum_size = Vector2(110, 0)
 layout_mode = 2
 
-[node name="RepairLabel" type="Label" parent="CanvasLayer/PreGame/BottomBar/Top/Panel4"]
+[node name="RepairLabel" type="Label" parent="CanvasLayer/PreGame/Content/BottomBar/Top/Panel4"]
 unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = 15
@@ -83,16 +114,17 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-text = "Repair: 00"
+text = "Repair: 0/0"
+horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 2
 
-[node name="Panel5" type="Panel" parent="CanvasLayer/PreGame/BottomBar/Top"]
+[node name="Panel5" type="Panel" parent="CanvasLayer/PreGame/Content/BottomBar/Top"]
 self_modulate = Color(1, 1, 1, 0.498039)
 custom_minimum_size = Vector2(110, 0)
 layout_mode = 2
 
-[node name="InvLabel" type="Label" parent="CanvasLayer/PreGame/BottomBar/Top/Panel5"]
+[node name="InvLabel" type="Label" parent="CanvasLayer/PreGame/Content/BottomBar/Top/Panel5"]
 unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = 15
@@ -101,74 +133,90 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 text = "Inventory: 00"
+horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 2
 
-[node name="Bot" type="HBoxContainer" parent="CanvasLayer/PreGame/BottomBar"]
+[node name="Panel6" type="Panel" parent="CanvasLayer/PreGame/Content/BottomBar/Top"]
+self_modulate = Color(1, 1, 1, 0.498039)
+custom_minimum_size = Vector2(250, 0)
+layout_mode = 2
+
+[node name="RestockPriceLabel" type="Label" parent="CanvasLayer/PreGame/Content/BottomBar/Top/Panel6"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Next toolbox cost: 00"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="ResetRestockingButton" type="Button" parent="CanvasLayer/PreGame/Content/BottomBar/Top"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Reset toolboxes"
+
+[node name="Bot" type="HBoxContainer" parent="CanvasLayer/PreGame/Content/BottomBar"]
 custom_minimum_size = Vector2(0, 60)
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_constants/separation = 10
 
-[node name="SpeedButton" type="Button" parent="CanvasLayer/PreGame/BottomBar/Bot"]
+[node name="Padding2" type="Control" parent="CanvasLayer/PreGame/Content/BottomBar/Bot"]
+custom_minimum_size = Vector2(110, 0)
+layout_mode = 2
+
+[node name="SpeedButton" type="Button" parent="CanvasLayer/PreGame/Content/BottomBar/Bot"]
 unique_name_in_owner = true
+custom_minimum_size = Vector2(110, 0)
 layout_mode = 2
 text = "+ Speed
 - 5 cash"
 
-[node name="RepairButton" type="Button" parent="CanvasLayer/PreGame/BottomBar/Bot"]
+[node name="RepairButton" type="Button" parent="CanvasLayer/PreGame/Content/BottomBar/Bot"]
 unique_name_in_owner = true
+custom_minimum_size = Vector2(110, 0)
 layout_mode = 2
 text = "+ Speed
 - 5 cash"
 
-[node name="InvButton" type="Button" parent="CanvasLayer/PreGame/BottomBar/Bot"]
+[node name="InvButton" type="Button" parent="CanvasLayer/PreGame/Content/BottomBar/Bot"]
 unique_name_in_owner = true
+custom_minimum_size = Vector2(110, 0)
 layout_mode = 2
 text = "+ Speed
 - 5 cash"
 
-[node name="Panel" type="Panel" parent="CanvasLayer/PreGame/BottomBar/Bot"]
+[node name="Panel" type="Panel" parent="CanvasLayer/PreGame/Content/BottomBar/Bot"]
 self_modulate = Color(1, 1, 1, 0.498039)
 custom_minimum_size = Vector2(250, 0)
 layout_mode = 2
 
-[node name="Label" type="Label" parent="CanvasLayer/PreGame/BottomBar/Bot/Panel"]
+[node name="Label" type="Label" parent="CanvasLayer/PreGame/Content/BottomBar/Bot/Panel"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-text = "Click on the map to buy/add restocking points (cost scales)"
+text = "Click on the map to add toolboxes"
+horizontal_alignment = 1
+vertical_alignment = 1
 autowrap_mode = 2
 
-[node name="RestockPriceLabel" type="Label" parent="CanvasLayer/PreGame/BottomBar/Bot/Panel"]
-unique_name_in_owner = true
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-text = "Cost of next point: 00"
-vertical_alignment = 2
-autowrap_mode = 2
-
-[node name="ResetRestockingButton" type="Button" parent="CanvasLayer/PreGame/BottomBar/Bot"]
-unique_name_in_owner = true
-layout_mode = 2
-text = "Reset restocking points"
-
-[node name="Padding" type="Control" parent="CanvasLayer/PreGame/BottomBar/Bot"]
+[node name="Padding" type="Control" parent="CanvasLayer/PreGame/Content/BottomBar/Bot"]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="StartButton" type="Button" parent="CanvasLayer/PreGame/BottomBar/Bot"]
+[node name="StartButton" type="Button" parent="CanvasLayer/PreGame/Content/BottomBar/Bot"]
 unique_name_in_owner = true
+custom_minimum_size = Vector2(200, 0)
 layout_mode = 2
-text = "START
-RACE"
+text = "START RACE"
 
 [node name="Popup" parent="CanvasLayer/PreGame" instance=ExtResource("2_tw0f8")]
 unique_name_in_owner = true
@@ -182,12 +230,12 @@ demo = true
 unique_name_in_owner = true
 
 [node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(537, -24)
-zoom = Vector2(0.185, 0.185)
+position = Vector2(537, 42)
+zoom = Vector2(0.3, 0.3)
 
 [connection signal="gui_input" from="CanvasLayer/PreGame" to="CanvasLayer/PreGame" method="_on_gui_input"]
-[connection signal="pressed" from="CanvasLayer/PreGame/BottomBar/Bot/SpeedButton" to="CanvasLayer/PreGame" method="upgrade_bought" binds= [&"speed"]]
-[connection signal="pressed" from="CanvasLayer/PreGame/BottomBar/Bot/RepairButton" to="CanvasLayer/PreGame" method="upgrade_bought" binds= [&"repair"]]
-[connection signal="pressed" from="CanvasLayer/PreGame/BottomBar/Bot/InvButton" to="CanvasLayer/PreGame" method="upgrade_bought" binds= [&"inventory"]]
-[connection signal="pressed" from="CanvasLayer/PreGame/BottomBar/Bot/ResetRestockingButton" to="CanvasLayer/PreGame" method="_on_reset_restocking_button_pressed"]
-[connection signal="pressed" from="CanvasLayer/PreGame/BottomBar/Bot/StartButton" to="CanvasLayer/PreGame" method="_on_start_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/PreGame/Content/BottomBar/Top/ResetRestockingButton" to="CanvasLayer/PreGame" method="_on_reset_restocking_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/PreGame/Content/BottomBar/Bot/SpeedButton" to="CanvasLayer/PreGame" method="upgrade_bought" binds= [&"speed"]]
+[connection signal="pressed" from="CanvasLayer/PreGame/Content/BottomBar/Bot/RepairButton" to="CanvasLayer/PreGame" method="upgrade_bought" binds= [&"repair"]]
+[connection signal="pressed" from="CanvasLayer/PreGame/Content/BottomBar/Bot/InvButton" to="CanvasLayer/PreGame" method="upgrade_bought" binds= [&"inventory"]]
+[connection signal="pressed" from="CanvasLayer/PreGame/Content/BottomBar/Bot/StartButton" to="CanvasLayer/PreGame" method="_on_start_button_pressed"]

@@ -1,6 +1,8 @@
-[gd_scene load_steps=2 format=3 uid="uid://bug0tli3hqb5n"]
+[gd_scene load_steps=4 format=3 uid="uid://bug0tli3hqb5n"]
 
 [ext_resource type="Script" uid="uid://wnqwwp8fuaf8" path="res://components/ui/ui.gd" id="1_wh8a2"]
+[ext_resource type="Texture2D" uid="uid://i1xlwqnuq3rr" path="res://components/ui/repair_pack_icon.png" id="2_wh8a2"]
+[ext_resource type="Texture2D" uid="uid://cngmgwi05fvks" path="res://components/ui/panel_nine_patch.png" id="3_voclx"]
 
 [node name="Ui" type="Control"]
 layout_mode = 3
@@ -23,36 +25,48 @@ offset_bottom = -10.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Inventory" type="VBoxContainer" parent="Margin"]
+[node name="AroundPlayer" type="Control" parent="Margin"]
 layout_mode = 1
-anchors_preset = -1
-anchor_right = 0.04
-anchor_bottom = 1.0
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -270.0
+offset_top = -270.0
+offset_right = 270.0
+offset_bottom = 270.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_constants/separation = 10
 
-[node name="Label" type="Label" parent="Margin/Inventory"]
-custom_minimum_size = Vector2(1, 0)
-layout_mode = 2
-text = "Repair Packs"
-horizontal_alignment = 1
-autowrap_mode = 2
+[node name="HBoxContainer" type="HBoxContainer" parent="Margin/AroundPlayer"]
+modulate = Color(1, 1, 1, 0.784314)
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
 
-[node name="Label2" type="Label" parent="Margin/Inventory"]
-custom_minimum_size = Vector2(1, 0)
+[node name="TextureRect" type="TextureRect" parent="Margin/AroundPlayer/HBoxContainer"]
+self_modulate = Color(1, 1, 1, 0.431373)
 layout_mode = 2
-text = "Score"
-horizontal_alignment = 1
-autowrap_mode = 2
+texture = ExtResource("2_wh8a2")
+
+[node name="ToolboxLabel" type="Label" parent="Margin/AroundPlayer/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 31
+text = "4"
 
 [node name="ProgressBar" type="ProgressBar" parent="."]
 layout_mode = 1
-anchors_preset = 12
+anchors_preset = 7
+anchor_left = 0.5
 anchor_top = 1.0
-anchor_right = 1.0
+anchor_right = 0.5
 anchor_bottom = 1.0
-offset_top = -27.0
+offset_left = -246.0
+offset_top = -92.0
+offset_right = 246.0
+offset_bottom = -65.0
 grow_horizontal = 2
 grow_vertical = 0
 step = 0.1
@@ -62,9 +76,9 @@ layout_mode = 1
 anchors_preset = 2
 anchor_top = 1.0
 anchor_bottom = 1.0
-offset_top = -205.0
+offset_top = -115.0
 offset_right = 147.0
-offset_bottom = -151.0
+offset_bottom = -61.0
 grow_vertical = 0
 text = "Button of winning
 (+100 cash)"
@@ -74,49 +88,75 @@ layout_mode = 1
 anchors_preset = 2
 anchor_top = 1.0
 anchor_bottom = 1.0
-offset_top = -113.0
+offset_top = -54.0
 offset_right = 197.0
-offset_bottom = -59.0
 grow_vertical = 0
 text = "Button of doom
 (delete save file!)"
 
-[node name="ExpectedWins" type="VBoxContainer" parent="."]
+[node name="Background" type="NinePatchRect" parent="."]
+self_modulate = Color(1, 1, 1, 0.498039)
 layout_mode = 1
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
-offset_left = -142.0
-offset_bottom = 50.0
+offset_left = -198.0
+offset_bottom = 225.0
 grow_horizontal = 0
+texture = ExtResource("3_voclx")
+region_rect = Rect2(0, 0, 139, 138)
+patch_margin_left = 30
+patch_margin_top = 29
+patch_margin_right = 30
+patch_margin_bottom = 30
 
-[node name="Label" type="Label" parent="ExpectedWins"]
+[node name="Content" type="Control" parent="Background"]
+layout_mode = 1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 20.0
+offset_top = 20.0
+offset_right = -20.0
+offset_bottom = -20.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ExpectedWins" type="VBoxContainer" parent="Background/Content"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="Background/Content/ExpectedWins"]
 layout_mode = 2
 text = "Expected earnings
 (on a win)"
 horizontal_alignment = 1
 
-[node name="ExpectedCashLabel" type="Label" parent="ExpectedWins"]
+[node name="ExpectedCashLabel" type="Label" parent="Background/Content/ExpectedWins"]
 layout_mode = 2
 text = "??? cash"
 horizontal_alignment = 1
 
-[node name="Label4" type="Label" parent="ExpectedWins"]
+[node name="Label4" type="Label" parent="Background/Content/ExpectedWins"]
 layout_mode = 2
 text = "------------"
 horizontal_alignment = 1
 
-[node name="SalaryLabel" type="Label" parent="ExpectedWins"]
+[node name="SalaryLabel" type="Label" parent="Background/Content/ExpectedWins"]
 layout_mode = 2
 text = "+1000 salary"
 horizontal_alignment = 1
 
-[node name="HolesFixedBonusLabel" type="Label" parent="ExpectedWins"]
+[node name="HolesFixedBonusLabel" type="Label" parent="Background/Content/ExpectedWins"]
 layout_mode = 2
 text = "+??? holes fixed"
 horizontal_alignment = 1
 
-[node name="CarsCrashedBonusLabel" type="Label" parent="ExpectedWins"]
+[node name="CarsCrashedBonusLabel" type="Label" parent="Background/Content/ExpectedWins"]
 layout_mode = 2
 text = "-??? cars crashed"
 horizontal_alignment = 1

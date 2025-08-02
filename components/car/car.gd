@@ -8,13 +8,14 @@ signal laps_completed_updated
 @export var racetrack: Racetrack # filled by Racetrack scene
 @export var texture: Texture2D
 
-const MIN_SPEED: float = .07
-const MAX_SPEED: float = .13
+# const changed to vars to allow editing difficulty
+var MIN_SPEED: float = .07
+var MAX_SPEED: float = .13
 
-const WIDTH_OFFSET: float = 110
-const HOLE_SPAWN_CHANCE = .03 #3%
-const HOLE_DAMAGE_CHANCE = .3 #30%
-const HOLE_CRASH_CHANCE = .05 #5%
+var WIDTH_OFFSET: float = 110 # still looks ok with 210
+var HOLE_SPAWN_CHANCE = .03 #3%
+var HOLE_DAMAGE_CHANCE = .3 #30%
+var HOLE_CRASH_CHANCE = .05 #5%
 const TWEEN_SPEED = 1.5
 
 var move_speed: float = 0
@@ -30,6 +31,7 @@ func get_width_offset() -> float:
 	return WIDTH_OFFSET
 
 func _ready():
+	$DifficultyScaler.scale_difficulty(self, racetrack.car_difficulty)
 	$Body/Sprite2D.texture = texture
 
 var _previous_progress_ratio = 0

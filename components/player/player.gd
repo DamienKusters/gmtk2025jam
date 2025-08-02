@@ -7,7 +7,7 @@ signal holes_patched_updated
 signal focussed_hole_updated # used in this class
 
 @onready var animation: AnimatedPlayer = $AnimatedSprite2D
-const UP_DOWN_MARGIN = 200
+const UP_DOWN_MARGIN = 100
 
 const MOVE_SPEED: float = 700
 const REPAIR_DELAY: float = 1
@@ -36,7 +36,7 @@ func _ready() -> void:
 	focussed_hole_updated.connect(_switch_hole_focus)
 
 func get_move_speed() -> float:
-	return MOVE_SPEED + (280 * Global.player_upgrades.speed)
+	return MOVE_SPEED + (180 * Global.player_upgrades.speed)
 
 func get_repair_delay() -> float:
 	var decrease = 0

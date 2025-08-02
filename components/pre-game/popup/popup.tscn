@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://c0c54hoas1p1n"]
+[gd_scene load_steps=3 format=3 uid="uid://c0c54hoas1p1n"]
 
 [ext_resource type="Script" uid="uid://c5hddunfgawia" path="res://components/pre-game/popup/popup.gd" id="1_628qd"]
+[ext_resource type="Texture2D" uid="uid://cngmgwi05fvks" path="res://components/ui/panel_nine_patch.png" id="2_3iwyp"]
 
 [node name="Popup" type="Control"]
 layout_mode = 3
@@ -17,48 +18,66 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_628qd")
 
-[node name="Panel" type="Panel" parent="."]
+[node name="Background" type="NinePatchRect" parent="."]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+texture = ExtResource("2_3iwyp")
+region_rect = Rect2(0, 0, 139, 138)
+patch_margin_left = 30
+patch_margin_top = 29
+patch_margin_right = 30
+patch_margin_bottom = 30
+
+[node name="Content" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 20.0
+offset_top = 20.0
+offset_right = -20.0
+offset_bottom = -20.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="Content"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.253
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse euismod hendrerit nulla, imperdiet blandit urna rutrum a. Aliquam congue ultricies lacus eu porttitor."
+autowrap_mode = 2
+
+[node name="Label2" type="Label" parent="Content"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 0.244
+grow_horizontal = 2
+grow_vertical = 2
+text = "Alert"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
 
 [node name="Button" type="Button" parent="."]
 layout_mode = 1
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
-offset_left = -17.0
-offset_bottom = 31.0
+offset_left = -54.0
+offset_bottom = 49.0
 grow_horizontal = 0
 theme_override_font_sizes/font_size = 26
 text = "x"
 flat = true
-
-[node name="Label" type="Label" parent="."]
-layout_mode = 1
-anchors_preset = -1
-anchor_top = 0.253
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 10.0
-offset_right = -10.0
-grow_horizontal = 2
-grow_vertical = 2
-text = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse euismod hendrerit nulla, imperdiet blandit urna rutrum a. Aliquam congue ultricies lacus eu porttitor. Nulla est diam, interdum dignissim neque sit amet, ultrices elementum augue. Fusce "
-autowrap_mode = 2
-
-[node name="Label2" type="Label" parent="."]
-layout_mode = 1
-anchors_preset = -1
-anchor_right = 0.945
-anchor_bottom = 0.244
-offset_left = 10.0
-text = "Alert"
-horizontal_alignment = 1
-vertical_alignment = 1
-autowrap_mode = 2
 
 [connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
