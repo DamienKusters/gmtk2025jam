@@ -14,6 +14,15 @@ var pin_instance: PackedScene = preload("res://components/pre-game/pin/pin.tscn"
 var restocking_point_instance: PackedScene = preload("res://components/restocking_point/restocking_point.tscn")
 var restocking_coords = []# Read by Game
 
+# Level select
+var selected_racetrack: int = 1 # big one = 1
+var selected_difficulty: int = 0
+
+var racetracks = [
+	preload("res://components/racetrack/variants/tutorial/racetrack_tutorial.tscn"),
+	preload("res://components/racetrack/racetrack.tscn")
+]
+
 var hole_textures = [
 	preload("res://components/hole/small.png"),
 	preload("res://components/hole/medium.png"),
@@ -60,6 +69,9 @@ func get_pin_instance():
 
 func get_restocking_point_instance():
 	return restocking_point_instance.instantiate()
+
+func get_selected_racetrack_instance():
+	return racetracks[selected_racetrack].instantiate()
 
 func get_hole_textures() -> Array:
 	return hole_textures

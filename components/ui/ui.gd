@@ -5,6 +5,7 @@ class_name UI
 @export var racetrack: Racetrack
 
 func _ready() -> void:
+	await get_parent().get_parent().ready 
 	racetrack.current_lap_updated.connect(update_lap_progress)
 	player.inventory_repair_packs_updated.connect(update_inventory)
 	player.holes_patched_updated.connect(func(_x): update_expected_wins())

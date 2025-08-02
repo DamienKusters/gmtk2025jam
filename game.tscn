@@ -1,22 +1,20 @@
-[gd_scene load_steps=6 format=3 uid="uid://crgk2ttacj2h7"]
+[gd_scene load_steps=5 format=3 uid="uid://crgk2ttacj2h7"]
 
 [ext_resource type="PackedScene" uid="uid://8r031ygdj7iu" path="res://components/player/player.tscn" id="1_e2o6t"]
 [ext_resource type="Script" uid="uid://cpnu73y657obi" path="res://game.gd" id="1_eow3j"]
 [ext_resource type="PackedScene" uid="uid://bug0tli3hqb5n" path="res://components/ui/ui.tscn" id="1_ryrav"]
 [ext_resource type="PackedScene" uid="uid://br1cnyi624n11" path="res://components/camera/camera.tscn" id="3_feb5d"]
-[ext_resource type="PackedScene" uid="uid://24qjy78bw8hb" path="res://components/racetrack/racetrack.tscn" id="4_eow3j"]
 
-[node name="Game" type="Node2D"]
+[node name="Game" type="Node2D" node_paths=PackedStringArray("ui")]
 script = ExtResource("1_eow3j")
+ui = NodePath("CanvasLayer/Ui")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
-[node name="Ui" parent="CanvasLayer" node_paths=PackedStringArray("player", "racetrack") instance=ExtResource("1_ryrav")]
+[node name="Ui" parent="CanvasLayer" node_paths=PackedStringArray("player") instance=ExtResource("1_ryrav")]
 player = NodePath("../../Player")
-racetrack = NodePath("../../Racetrack")
 
-[node name="Racetrack" parent="." node_paths=PackedStringArray("player") instance=ExtResource("4_eow3j")]
-player = NodePath("../Player")
+[node name="RacetrackRoot" type="Node2D" parent="."]
 
 [node name="RestockingPoints" type="Node2D" parent="."]
 
