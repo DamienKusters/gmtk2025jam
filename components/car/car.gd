@@ -78,6 +78,7 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 
 func _crash():
 	crashed = true
+	Global.sfx.play_sfx("car_destroyed")
 	Global.update_ui_expected_earnings.emit()
 	var expl = Global.get_car_explosion_instance()
 	expl.position = $Body.global_position

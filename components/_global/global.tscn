@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://c48bsnli5fjr2"]
+[gd_scene load_steps=5 format=3 uid="uid://c48bsnli5fjr2"]
 
 [ext_resource type="Script" uid="uid://bxtgoelyuxthd" path="res://components/_global/global.gd" id="1_lrh7y"]
 [ext_resource type="Script" uid="uid://bmvvxgfhevcx2" path="res://components/_global/save.gd" id="2_fxurf"]
 [ext_resource type="AudioStream" uid="uid://dsmkyrf64ksbr" path="res://components/_global/test 2.mp3" id="3_jt3x8"]
+[ext_resource type="Script" uid="uid://dpoo4n0t5kr7" path="res://components/_global/sfx_player.gd" id="4_o8g1v"]
 
 [node name="Global" type="Node"]
 script = ExtResource("1_lrh7y")
@@ -14,3 +15,6 @@ script = ExtResource("2_fxurf")
 stream = ExtResource("3_jt3x8")
 volume_db = -15.0
 autoplay = true
+
+[node name="SfxPlayer" type="Node" parent="."]
+script = ExtResource("4_o8g1v")

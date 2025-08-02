@@ -1,6 +1,7 @@
 extends Node
 
 @onready var save: Save = $Save
+@onready var sfx: Sfx = $SfxPlayer
 
 signal cash_updated
 signal player_upgrades_updated

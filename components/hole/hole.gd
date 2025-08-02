@@ -13,6 +13,8 @@ func hole_is_max_size() -> bool:
 func damage_hole():
 	hole_size = clampi(hole_size + 1, -1, Global.get_hole_textures().size() -1)
 	_render_hole(hole_size)
+	$CPUParticles2D.amount = 3
+	$CPUParticles2D.restart()
 	
 func repair_hole():
 	hole_size = clampi(hole_size - 1, -1, Global.get_hole_textures().size() -1)

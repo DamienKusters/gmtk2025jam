@@ -90,6 +90,7 @@ func _on_gui_input(event: InputEvent) -> void:
 		var camera = $"../../Camera2D"
 		i.position = camera.get_global_mouse_position()
 		%RestockingPoints.add_child(i)
+		Global.sfx.play_sfx("pop")
 		placed_restocking_pins += 1
 		update_restock_cost()
 

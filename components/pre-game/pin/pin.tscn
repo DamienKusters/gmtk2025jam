@@ -1,10 +1,10 @@
 [gd_scene load_steps=2 format=3 uid="uid://bp6rxdag60fqv"]
 
-[ext_resource type="Texture2D" uid="uid://dp3yipj2s1ira" path="res://components/pre-game/pin/pin.png" id="1_7sh6b"]
+[ext_resource type="Texture2D" uid="uid://7p3e8kjtgo5i" path="res://components/pre-game/pin/pin2.png" id="1_kduw0"]
 
 [node name="Pin" type="Node2D"]
 
 [node name="Sprite" type="Sprite2D" parent="."]
 position = Vector2(0, -220)
 scale = Vector2(3.92188, 3.92188)
-texture = ExtResource("1_7sh6b")
+texture = ExtResource("1_kduw0")

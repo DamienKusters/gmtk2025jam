@@ -104,11 +104,13 @@ func _on_repair_timer_timeout() -> void:
 	holes_patched += 1
 	$RepairTimerVisualizer.visible = false
 	inventory_repair_packs -= 1
+	Global.sfx.play_sfx("fix_road")
 	focussed_hole = null # Trigger clear
 
 func _on_area_2d_area_entered(area: Area2D) -> void:
 	if area is RestockingPoint:
 		inventory_repair_packs = get_inventory_size()
+		Global.sfx.play_sfx("restock")
 
 var _tween_progress: Tween
 func _animate_progress():
