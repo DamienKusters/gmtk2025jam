@@ -9,7 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://dip50v30t86ww" path="res://components/restocking_point/toolbox.png" id="7_bv0o5"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_kfe3d"]
-radius = 64.0
+radius = 50.01
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ph1f6"]
 radius = 90.0

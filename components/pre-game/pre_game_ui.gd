@@ -98,3 +98,6 @@ func _on_reset_restocking_button_pressed() -> void:
 		child.call_deferred("queue_free")
 	placed_restocking_pins = 0
 	update_restock_cost()
+
+func _on_main_menu_button_pressed() -> void:
+	Global.load_game("res://components/main_menu/main_menu.tscn")

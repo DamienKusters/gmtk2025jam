@@ -81,18 +81,7 @@ offset_right = 147.0
 offset_bottom = -61.0
 grow_vertical = 0
 text = "Button of winning
-(+100 cash)"
-
-[node name="Button2" type="Button" parent="."]
-layout_mode = 1
-anchors_preset = 2
-anchor_top = 1.0
-anchor_bottom = 1.0
-offset_top = -54.0
-offset_right = 197.0
-grow_vertical = 0
-text = "Button of doom
-(delete save file!)"
+(+300 cash)"
 
 [node name="Background" type="NinePatchRect" parent="."]
 self_modulate = Color(1, 1, 1, 0.498039)
@@ -162,4 +151,3 @@ text = "-??? cars crashed"
 horizontal_alignment = 1
 
 [connection signal="pressed" from="Button" to="." method="_debug_winbutton"]
-[connection signal="pressed" from="Button2" to="." method="_temp_deletesave"]

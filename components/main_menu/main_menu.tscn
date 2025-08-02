@@ -1,11 +1,69 @@
-[gd_scene load_steps=3 format=3 uid="uid://babkyi6noh1qh"]
+[gd_scene load_steps=11 format=3 uid="uid://babkyi6noh1qh"]
 
 [ext_resource type="Texture2D" uid="uid://cngmgwi05fvks" path="res://components/ui/panel_nine_patch.png" id="1_7xoae"]
+[ext_resource type="Script" uid="uid://c7pymt0wsyd8h" path="res://components/main_menu/main_menu.gd" id="1_qpshq"]
 [ext_resource type="Texture2D" uid="uid://h5pfoyxa07cq" path="res://components/main_menu/gmtk-game-jam-2025-logo-white.png" id="2_c7jga"]
+[ext_resource type="Texture2D" uid="uid://b1u3h6f64a3ws" path="res://components/ui/panel_nine_patch_full_corners.png" id="2_e7231"]
+[ext_resource type="Texture2D" uid="uid://cqksx4jue42u6" path="res://components/main_menu/menu_person.png" id="3_s50wb"]
+[ext_resource type="Texture2D" uid="uid://bd30loy2jw4ra" path="res://components/main_menu/menu_arm.png" id="4_qpshq"]
+[ext_resource type="PackedScene" uid="uid://24qjy78bw8hb" path="res://components/racetrack/racetrack.tscn" id="7_eakp8"]
+
+[sub_resource type="Animation" id="Animation_e7231"]
+resource_name = "wave"
+length = 0.9
+loop_mode = 1
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.45),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [2.79253, 2.26893]
+}
+
+[sub_resource type="Animation" id="Animation_eakp8"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [2.79253]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_sarwh"]
+_data = {
+&"RESET": SubResource("Animation_eakp8"),
+&"wave": SubResource("Animation_e7231")
+}
 
 [node name="MainMenu" type="Node2D"]
+script = ExtResource("1_qpshq")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Background2" type="NinePatchRect" parent="CanvasLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_e7231")
+region_rect = Rect2(0, 0, 139, 138)
+patch_margin_left = 30
+patch_margin_top = 29
+patch_margin_right = 30
+patch_margin_bottom = 30
 
 [node name="Control" type="Control" parent="CanvasLayer"]
 layout_mode = 3
@@ -25,10 +83,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -203.0
-offset_top = -168.0
-offset_right = 203.0
-offset_bottom = 168.0
+offset_left = -235.0
+offset_top = -219.0
+offset_right = 235.0
+offset_bottom = 219.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("1_7xoae")
@@ -81,3 +139,62 @@ grow_horizontal = 0
 texture = ExtResource("2_c7jga")
 expand_mode = 2
 stretch_mode = 4
+
+[node name="Credits" type="Label" parent="CanvasLayer/Control"]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_top = -17.5
+offset_right = 262.0
+offset_bottom = 17.5
+grow_vertical = 2
+theme_override_font_sizes/font_size = 25
+text = "Made by: Damien Kusters
+
+Visuals by: Floris Peters
+
+Music by: Jochem van Hout
+
+Car explosion: ansimuz.itch.io"
+
+[node name="Credits2" type="Label" parent="CanvasLayer/Control"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -262.0
+offset_top = -35.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_font_sizes/font_size = 25
+text = "damienkusters.itch.io"
+
+[node name="Racetrack" parent="." instance=ExtResource("7_eakp8")]
+position = Vector2(650, 955)
+scale = Vector2(0.525, 0.525)
+car_amount = 0
+demo = true
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(218, 988)
+rotation = 0.23911
+scale = Vector2(0.541456, 0.541457)
+texture = ExtResource("3_s50wb")
+
+[node name="Sprite2D" type="Sprite2D" parent="Sprite2D"]
+position = Vector2(-148.362, 28.9617)
+rotation = 2.79253
+texture = ExtResource("4_qpshq")
+offset = Vector2(0, 63.365)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Sprite2D/Sprite2D"]
+libraries = {
+&"": SubResource("AnimationLibrary_sarwh")
+}
+autoplay = "wave"
+
+[connection signal="pressed" from="CanvasLayer/Control/Background/Content/Button2" to="." method="_on_button_2_pressed"]
+[connection signal="pressed" from="CanvasLayer/Control/Background/Content/Button3" to="." method="_on_button_3_pressed"]

@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://bf4vt234fvtpp"]
+[gd_scene load_steps=6 format=3 uid="uid://bf4vt234fvtpp"]
 
 [ext_resource type="Script" uid="uid://b6fihh5ww34p" path="res://components/pre-game/pre_game_ui.gd" id="1_5e81d"]
 [ext_resource type="PackedScene" uid="uid://24qjy78bw8hb" path="res://components/racetrack/racetrack.tscn" id="1_bbs4h"]
+[ext_resource type="Texture2D" uid="uid://b1u3h6f64a3ws" path="res://components/ui/panel_nine_patch_full_corners.png" id="2_ex6td"]
 [ext_resource type="PackedScene" uid="uid://c0c54hoas1p1n" path="res://components/pre-game/popup/popup.tscn" id="2_tw0f8"]
-[ext_resource type="Texture2D" uid="uid://cngmgwi05fvks" path="res://components/ui/panel_nine_patch.png" id="2_wxogy"]
+[ext_resource type="Texture2D" uid="uid://cpqd4au6vnya" path="res://components/ui/panel_nine_patch_full_corners_filled.png" id="3_5k1dc"]
 
 [node name="PreGame" type="Node"]
 
@@ -20,6 +21,21 @@ mouse_filter = 1
 mouse_default_cursor_shape = 2
 script = ExtResource("1_5e81d")
 
+[node name="Background2" type="NinePatchRect" parent="CanvasLayer/PreGame"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_bottom = -120.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_ex6td")
+region_rect = Rect2(0, 0, 139, 138)
+patch_margin_left = 30
+patch_margin_top = 29
+patch_margin_right = 30
+patch_margin_bottom = 30
+
 [node name="Background" type="NinePatchRect" parent="CanvasLayer/PreGame"]
 layout_mode = 1
 anchors_preset = -1
@@ -30,7 +46,7 @@ offset_top = -120.0
 offset_bottom = 50.0
 grow_horizontal = 2
 grow_vertical = 0
-texture = ExtResource("2_wxogy")
+texture = ExtResource("3_5k1dc")
 region_rect = Rect2(0, 0, 139, 138)
 patch_margin_left = 30
 patch_margin_top = 29
@@ -67,7 +83,7 @@ theme_override_constants/separation = 10
 
 [node name="Panel2" type="Panel" parent="CanvasLayer/PreGame/Content/BottomBar/Top"]
 self_modulate = Color(1, 1, 1, 0.498039)
-custom_minimum_size = Vector2(110, 0)
+custom_minimum_size = Vector2(150, 0)
 layout_mode = 2
 
 [node name="CashLabel" type="Label" parent="CanvasLayer/PreGame/Content/BottomBar/Top/Panel2"]
@@ -166,9 +182,11 @@ layout_mode = 2
 size_flags_vertical = 3
 theme_override_constants/separation = 10
 
-[node name="Padding2" type="Control" parent="CanvasLayer/PreGame/Content/BottomBar/Bot"]
-custom_minimum_size = Vector2(110, 0)
+[node name="MainMenuButton" type="Button" parent="CanvasLayer/PreGame/Content/BottomBar/Bot"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(150, 0)
 layout_mode = 2
+text = "< Main Menu"
 
 [node name="SpeedButton" type="Button" parent="CanvasLayer/PreGame/Content/BottomBar/Bot"]
 unique_name_in_owner = true
@@ -235,6 +253,7 @@ zoom = Vector2(0.3, 0.3)
 
 [connection signal="gui_input" from="CanvasLayer/PreGame" to="CanvasLayer/PreGame" method="_on_gui_input"]
 [connection signal="pressed" from="CanvasLayer/PreGame/Content/BottomBar/Top/ResetRestockingButton" to="CanvasLayer/PreGame" method="_on_reset_restocking_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/PreGame/Content/BottomBar/Bot/MainMenuButton" to="CanvasLayer/PreGame" method="_on_main_menu_button_pressed"]
 [connection signal="pressed" from="CanvasLayer/PreGame/Content/BottomBar/Bot/SpeedButton" to="CanvasLayer/PreGame" method="upgrade_bought" binds= [&"speed"]]
 [connection signal="pressed" from="CanvasLayer/PreGame/Content/BottomBar/Bot/RepairButton" to="CanvasLayer/PreGame" method="upgrade_bought" binds= [&"repair"]]
 [connection signal="pressed" from="CanvasLayer/PreGame/Content/BottomBar/Bot/InvButton" to="CanvasLayer/PreGame" method="upgrade_bought" binds= [&"inventory"]]

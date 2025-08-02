@@ -23,6 +23,7 @@ func _ready():
 	if demo:
 		$CarTimer.stop()
 		$HoleTimer.stop()
+		$Background/Sprite2D3.visible = false
 	car_difficulty = Global.calculate_difficulty_based_on_upgrade_count()
 	print("Difficulty: " + str(car_difficulty))
 	for c in car_amount:

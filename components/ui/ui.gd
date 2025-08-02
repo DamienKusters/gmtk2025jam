@@ -31,10 +31,5 @@ func _animate_progress(value):
 	_tween_progress.tween_property($ProgressBar, "value", value, 10)
 
 # TODO REMOVE
-
 func _debug_winbutton() -> void:
-	Global.complete_level(100)
-
-func _temp_deletesave() -> void:
-	Global.save.cache = Global.save.template
-	Global.save.save_file()
+	Global.complete_level(300)
