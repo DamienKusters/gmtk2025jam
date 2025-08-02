@@ -29,6 +29,7 @@ var inventory_repair_packs: int = 3:
 	set(value):
 		inventory_repair_packs = clampi(value, 0, get_inventory_size())
 		inventory_repair_packs_updated.emit(value)
+		$AlertRepair.visible = inventory_repair_packs <= 0
 
 func _ready() -> void:
 	inventory_repair_packs = get_inventory_size()

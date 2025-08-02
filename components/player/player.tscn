@@ -183,8 +183,31 @@ texture_progress = ExtResource("4_mpawu")
 scale = Vector2(0.203125, 0.203125)
 sprite_frames = SubResource("SpriteFrames_4eo0i")
 animation = &"walk_down"
-frame_progress = 0.590319
+frame_progress = 0.472625
 script = ExtResource("5_02tnr")
+
+[node name="AlertRepair" type="ColorRect" parent="."]
+self_modulate = Color(1, 1, 1, 0.392157)
+offset_left = -704.0
+offset_top = -66.0
+offset_right = -103.0
+offset_bottom = 68.0
+color = Color(0, 0, 0, 1)
+
+[node name="Label" type="Label" parent="AlertRepair"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 5.0
+offset_top = 5.0
+offset_right = -5.0
+offset_bottom = -5.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 39
+text = "Out of repair packs;
+Find a Restocking point to refill."
 
 [connection signal="timeout" from="MonitorTimer" to="." method="_on_monitor_timer_timeout"]
 [connection signal="timeout" from="RepairTimer" to="." method="_on_repair_timer_timeout"]
