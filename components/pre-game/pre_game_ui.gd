@@ -73,6 +73,14 @@ func _on_start_button_pressed() -> void:
 	var restocking_coords = []
 	for child in %RestockingPoints.get_children():
 		restocking_coords.append(child.global_position)
+	if restocking_coords.is_empty():
+		%Popup.show_message("Place at least one (FREE) restocking point before starting the game.\nClick on the map to place one.")
+		return
+	var restocking_cost = _calculate_cost_of_restock_count(placed_restocking_pins - 1)
+	if Global.cash < restocking_cost:
+		%Popup.show_message("You can't afford this many restocking points.\nPress 'Reset restocking points' to try again.")
+		return
+	Global.cash -= restocking_cost
 	Global.restocking_coords = restocking_coords
 	Global.load_game()
 

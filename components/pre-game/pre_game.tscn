@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://bf4vt234fvtpp"]
+[gd_scene load_steps=4 format=3 uid="uid://bf4vt234fvtpp"]
 
 [ext_resource type="Script" uid="uid://b6fihh5ww34p" path="res://components/pre-game/pre_game_ui.gd" id="1_5e81d"]
 [ext_resource type="PackedScene" uid="uid://24qjy78bw8hb" path="res://components/racetrack/racetrack.tscn" id="1_bbs4h"]
+[ext_resource type="PackedScene" uid="uid://c0c54hoas1p1n" path="res://components/pre-game/popup/popup.tscn" id="2_tw0f8"]
 
 [node name="PreGame" type="Node"]
 
@@ -168,6 +169,10 @@ unique_name_in_owner = true
 layout_mode = 2
 text = "START
 RACE"
+
+[node name="Popup" parent="CanvasLayer/PreGame" instance=ExtResource("2_tw0f8")]
+unique_name_in_owner = true
+layout_mode = 1
 
 [node name="Racetrack" parent="." instance=ExtResource("1_bbs4h")]
 car_amount = 0
