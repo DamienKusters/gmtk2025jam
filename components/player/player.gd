@@ -3,6 +3,7 @@ class_name Player
 
 signal inventory_repair_packs_updated
 signal holes_patched_updated
+signal player_died
 
 signal focussed_hole_updated # used in this class
 
@@ -32,6 +33,7 @@ var inventory_repair_packs: int = 3:
 		$AlertRepair.visible = inventory_repair_packs <= 0
 
 func _ready() -> void:
+	Global.game_over_screen_appeared.connect(func(): alive = false)
 	inventory_repair_packs = get_inventory_size()
 	focussed_hole_updated.connect(_switch_hole_focus)
 
@@ -50,7 +52,7 @@ func get_inventory_size() -> int:
 func run_over(_car: Car):
 	if alive == true:
 		alive = false
-		Global.fail_level()
+		player_died.emit()
 
 func _process(delta: float) -> void:
 	if !alive:

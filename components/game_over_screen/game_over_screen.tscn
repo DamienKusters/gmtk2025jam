@@ -1,0 +1,284 @@
+[gd_scene load_steps=8 format=3 uid="uid://bp0dmmeeddytl"]
+
+[ext_resource type="Script" uid="uid://cdoijapsk3ghl" path="res://components/game_over_screen/game_over_screen.gd" id="1_yqmgk"]
+[ext_resource type="Texture2D" uid="uid://b1u3h6f64a3ws" path="res://components/ui/panel_nine_patch_full_corners.png" id="2_hipqf"]
+[ext_resource type="Texture2D" uid="uid://2utsix6rmxsw" path="res://components/game_over_screen/Loose_screen_hit_copy.png" id="3_b7qr5"]
+[ext_resource type="Texture2D" uid="uid://cngmgwi05fvks" path="res://components/ui/panel_nine_patch.png" id="4_i0ssd"]
+
+[sub_resource type="Animation" id="Animation_h5h4k"]
+resource_name = "scale"
+length = 1.5
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.8),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1e-05, 1e-05), Vector2(8, 8)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:position")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.8, 1.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(-50, -50), Vector2(-50, -336)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../../Background:modulate")
+tracks/2/interp = 2
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(1.1, 1.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("../../ColorRect:color")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 0), Color(0, 0, 0, 0.392157)]
+}
+
+[sub_resource type="Animation" id="Animation_2o1ix"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1e-05, 1e-05)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-50, -50)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../../Background:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("../../ColorRect:color")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0, 0, 0, 0.392157)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_36k6o"]
+_data = {
+&"RESET": SubResource("Animation_2o1ix"),
+&"scale": SubResource("Animation_h5h4k")
+}
+
+[node name="GameOverScreen" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_yqmgk")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.392157)
+
+[node name="Background2" type="NinePatchRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_hipqf")
+region_rect = Rect2(0, 0, 139, 138)
+patch_margin_left = 30
+patch_margin_top = 29
+patch_margin_right = 30
+patch_margin_bottom = 30
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="Control"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -50.0
+offset_top = -50.0
+offset_right = 50.0
+offset_bottom = 50.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(1e-05, 1e-05)
+pivot_offset = Vector2(50, 50)
+texture = ExtResource("3_b7qr5")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Background" type="NinePatchRect" parent="."]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -314.0
+offset_top = -519.0
+offset_right = 314.0
+offset_bottom = -36.0
+grow_horizontal = 2
+grow_vertical = 0
+texture = ExtResource("4_i0ssd")
+region_rect = Rect2(0, 0, 139, 138)
+patch_margin_left = 30
+patch_margin_top = 29
+patch_margin_right = 30
+patch_margin_bottom = 30
+
+[node name="Content" type="VBoxContainer" parent="Background"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 20.0
+offset_top = 20.0
+offset_right = -20.0
+offset_bottom = -20.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 20
+
+[node name="Content" type="Control" parent="Background/Content"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="ExpectedWins" type="VBoxContainer" parent="Background/Content/Content"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="Background/Content/Content/ExpectedWins"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 26
+text = "Earnings:"
+horizontal_alignment = 1
+
+[node name="SalaryLabel" type="Label" parent="Background/Content/Content/ExpectedWins"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 26
+text = "+1000 salary"
+horizontal_alignment = 1
+
+[node name="HolesFixedBonusLabel" type="Label" parent="Background/Content/Content/ExpectedWins"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 26
+text = "+??? repair bonus"
+horizontal_alignment = 1
+
+[node name="CarsCrashedBonusLabel" type="Label" parent="Background/Content/Content/ExpectedWins"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 26
+text = "+??? active cars bonus"
+horizontal_alignment = 1
+
+[node name="Label4" type="Label" parent="Background/Content/Content/ExpectedWins"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 26
+text = "------------"
+horizontal_alignment = 1
+
+[node name="ExpectedCashLabel" type="Label" parent="Background/Content/Content/ExpectedWins"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 26
+text = "??? cash"
+horizontal_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Background/Content"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="RetryButton" type="Button" parent="Background/Content/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 29
+text = "Continue"
+
+[node name="NextButton" type="Button" parent="Background/Content/HBoxContainer"]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 29
+text = "Next Level"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+root_node = NodePath("../Control/TextureRect")
+libraries = {
+&"": SubResource("AnimationLibrary_36k6o")
+}
+
+[connection signal="pressed" from="Background/Content/HBoxContainer/RetryButton" to="." method="_on_retry_button_pressed"]

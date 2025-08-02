@@ -6,11 +6,13 @@ extends Node
 signal cash_updated
 signal player_upgrades_updated
 signal update_ui_expected_earnings
+signal game_over_screen_appeared
 
 var hole_instance: PackedScene = preload("res://components/hole/hole.tscn")
 var car_instance: PackedScene = preload("res://components/car/car.tscn")
 var car_explosion_instance: PackedScene = preload("res://components/car/crash/crash.tscn")
 var pin_instance: PackedScene = preload("res://components/pre-game/pin/pin.tscn")
+var game_over_screen_instance: PackedScene = preload("res://components/game_over_screen/game_over_screen.tscn")
 var restocking_point_instance: PackedScene = preload("res://components/restocking_point/restocking_point.tscn")
 var restocking_coords = []# Read by Game
 
@@ -72,6 +74,11 @@ func get_restocking_point_instance():
 
 func get_selected_racetrack_instance():
 	return racetracks[selected_racetrack].instantiate()
+
+func get_game_over_screen_instance(type: GameOverScreen.GameOverType):
+	var i = game_over_screen_instance.instantiate()
+	i.game_over_type = type
+	return i
 
 func get_hole_textures() -> Array:
 	return hole_textures

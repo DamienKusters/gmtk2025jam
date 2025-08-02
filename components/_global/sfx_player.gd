@@ -8,6 +8,9 @@ var sfx = {
 	'pop': preload("res://components/_global/pop.wav"),
 	'fix_road': preload("res://components/_global/fix_road.wav"),
 	'car_destroyed': preload("res://components/_global/car_destroyed.wav"),
+	"win": preload("res://components/game_over_screen/win.mp3"),
+	"lose_crash": preload("res://components/game_over_screen/crashed.mp3"),
+	"lose_kill": preload("res://components/game_over_screen/runover.mp3"),
 }
 
 func play_sfx(sfx_key: String):

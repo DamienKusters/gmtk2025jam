@@ -2,6 +2,8 @@ extends Node2D
 class_name Racetrack
 
 signal current_lap_updated
+signal all_cars_destroyed
+signal race_finished
 
 @export var car_amount: int = 4
 @export var car_cash_bonus: int = 100
@@ -20,6 +22,7 @@ var current_lap: int = 0:
 		current_lap_updated.emit(value)
 
 func _ready():
+	Global.game_over_screen_appeared.connect(_stop_all_cars)
 	if demo:
 		$CarTimer.stop()
 		$HoleTimer.stop()
@@ -65,16 +68,22 @@ func _on_car_timer_timeout() -> void:
 		race_started = true
 		_first_tick = false
 	if current_lap == total_laps:
-		Global.complete_level(get_completion_cash())
+		race_finished.emit()
 	if !race_started:
 		return
 	for car: Car in $CarsPath.get_children():
 		car.update_behaviour()
 	if $CarsPath.get_children().size() == 0:
-		Global.fail_level()
+		all_cars_destroyed.emit()
 
 func _on_hole_timer_timeout() -> void:
 	if !race_started:
 		return
 	for car: Car in $CarsPath.get_children():
 		car.spawn_hole_attempt()
+
+func _stop_all_cars():
+	for car: Car in $CarsPath.get_children():
+		car.update_behaviour(true)
+	$CarTimer.stop()
+	$HoleTimer.stop()
