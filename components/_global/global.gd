@@ -19,6 +19,7 @@ var restocking_coords = []# Read by Game
 # Level select
 var selected_racetrack: int = 0 # big one = 1
 var selected_difficulty: int = 0
+var selected_level: int = 0
 
 var racetracks = [
 	preload("res://components/racetrack/variants/tutorial/racetrack_tutorial.tscn"),
@@ -112,12 +113,12 @@ func _ready():
 	player_upgrades = _previous_player_upgrades.duplicate()
 	cash = _previous_cash
 
-func complete_level(cash_reward: int):
+func complete_level(cash_reward: int, scene_override = "res://components/pre-game/pre_game.tscn"):
 	_previous_player_upgrades = player_upgrades.duplicate()
 	_previous_cash = cash + cash_reward
 	cash = _previous_cash # set cash
 	_save_save_file()
-	load_game("res://components/pre-game/pre_game.tscn")
+	load_game(scene_override)
 
 func fail_level():
 	load_game("res://components/pre-game/pre_game.tscn")
@@ -142,4 +143,6 @@ func _save_save_file():
 	save.set_float("speed", _previous_player_upgrades.speed)
 	save.set_float("repair", _previous_player_upgrades.repair)
 	save.set_float("inventory", _previous_player_upgrades.inventory)
+	if save.has_unlocked_level(selected_level) == false:
+		save.add_unlocked_level(selected_level)
 	save.save_file()

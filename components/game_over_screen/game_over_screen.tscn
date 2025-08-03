@@ -123,6 +123,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_yqmgk")
+game_over_type = null
 
 [node name="ColorRect" type="ColorRect" parent="."]
 layout_mode = 1
@@ -165,9 +166,9 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -50.0
-offset_top = -336.0
+offset_top = -50.0
 offset_right = 50.0
-offset_bottom = -236.0
+offset_bottom = 50.0
 grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(1e-05, 1e-05)
@@ -287,10 +288,9 @@ theme_override_constants/separation = 10
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_font_sizes/font_size = 29
-text = "Continue"
+text = "Replay Level"
 
 [node name="NextButton" type="Button" parent="Background/Content/HBoxContainer"]
-visible = false
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_font_sizes/font_size = 29
@@ -303,3 +303,4 @@ libraries = {
 }
 
 [connection signal="pressed" from="Background/Content/HBoxContainer/RetryButton" to="." method="_on_retry_button_pressed"]
+[connection signal="pressed" from="Background/Content/HBoxContainer/NextButton" to="." method="_on_next_button_pressed"]

@@ -27,6 +27,7 @@ func _ready():
 	Global.sfx.play_sfx(sound_mapping[game_over_type])
 	%ExpectedWins.visible = false
 	%LapsSurvived.visible = false
+	$Background/Content/HBoxContainer/NextButton.visible = game_over_type == GameOverType.WIN
 	if game_over_type == GameOverType.WIN:
 		update_expected_wins()
 	else:
@@ -48,3 +49,6 @@ func _on_retry_button_pressed() -> void:
 		Global.complete_level(ui.racetrack.get_completion_cash())
 	else:
 		Global.fail_level()
+
+func _on_next_button_pressed() -> void:
+	Global.complete_level(ui.racetrack.get_completion_cash(), "res://components/level_select/level_select.tscn")

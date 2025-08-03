@@ -12,10 +12,7 @@ var template = {
 		"repair": 0,
 		"inventory": 0,
 	},
-	"unlocks": {
-		"tracks":["tutorial", "loop"],
-		#"tracks":["tutorial","loop", "underpass", "highway"],
-	},
+	"levels":[],
 }
 
 # Contains loaded save file
@@ -42,41 +39,20 @@ func set_float(key: String, value: float) -> float:
 	cache.floats[key] = value
 	return true
 
-func get_unlocked_islands() -> Array[String]:
+func get_unlocked_levels() -> Array:
 	if _cache_not_loaded():
 		return []
-	return cache.unlocks.islands if cache.unlocks.has('islands') else []
+	return cache.levels if cache.has('levels') else []
 
-func has_unlocked_island(key: String) -> bool:
+func has_unlocked_level(level_id: int) -> bool:
 	if _cache_not_loaded():
 		return false
-	return cache.unlocks.islands.has(key)
+	return cache.levels.has(float(level_id))
 
-func set_unlocked_island(key: String) -> bool:
+func add_unlocked_level(level_id: int) -> bool:
 	if _cache_not_loaded():
 		return false
-	cache.unlocks.islands.append(key) #TODO: protect with .has() -> []
-	return true
-
-func get_unlocked_cartridges() -> Array[String]:
-	if _cache_not_loaded():
-		return []
-	return cache.unlocks.cartridges #TODO: protect with .has() -> []
-
-func has_unlocked_cartridge(key: String) -> bool:
-	if _cache_not_loaded():
-		return false
-	return cache.unlocks.cartridges.has(key)
-
-func get_challenge(key: String) -> bool:
-	if _cache_not_loaded():
-		return false
-	return cache.challenges[key] if cache.challenges.has(key) else false
-
-func set_challenge(key: String, value: bool) -> bool:
-	if _cache_not_loaded():
-		return false
-	cache.challenges[key] = value
+	cache.levels.append(float(level_id))
 	return true
 #endregion
 

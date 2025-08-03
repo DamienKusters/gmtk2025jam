@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://do2bf44oinw6a"]
+[gd_scene load_steps=14 format=3 uid="uid://do2bf44oinw6a"]
 
 [ext_resource type="Script" uid="uid://bfwgx0ek0vojv" path="res://components/level_select/level_select.gd" id="1_ml823"]
 [ext_resource type="Texture2D" uid="uid://b7dwkt40vqooi" path="res://components/racetrack/variants/tutorial/track_C.png" id="4_f8n7n"]
@@ -11,6 +11,7 @@
 [ext_resource type="Texture2D" uid="uid://dj2cdh5lmw2bv" path="res://components/car/race_car_4.png" id="7_3fw7p"]
 [ext_resource type="Texture2D" uid="uid://bdfwgfw18jerw" path="res://components/ui/button_nine_patch_disabled.png" id="7_3qg7o"]
 [ext_resource type="Texture2D" uid="uid://1lkvr1ldfhf6" path="res://components/racetrack/track_B_v2.png" id="7_ny4dt"]
+[ext_resource type="Texture2D" uid="uid://do5uw8e6do317" path="res://components/level_select/medal.png" id="8_3qg7o"]
 
 [sub_resource type="CanvasTexture" id="CanvasTexture_ml823"]
 
@@ -255,6 +256,21 @@ text = "1"
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/Content/VBoxContainer/Control/TextureButton"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -105.0
+offset_top = -74.0
+grow_horizontal = 0
+grow_vertical = 0
+texture = ExtResource("8_3qg7o")
+expand_mode = 1
+stretch_mode = 5
+
 [node name="TextureButton2" type="TextureButton" parent="CanvasLayer/Content/VBoxContainer/Control"]
 layout_mode = 2
 size_flags_horizontal = 3
@@ -277,6 +293,21 @@ theme_override_font_sizes/font_size = 71
 text = "2"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/Content/VBoxContainer/Control/TextureButton2"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -105.0
+offset_top = -74.0
+grow_horizontal = 0
+grow_vertical = 0
+texture = ExtResource("8_3qg7o")
+expand_mode = 1
+stretch_mode = 5
 
 [node name="TextureButton3" type="TextureButton" parent="CanvasLayer/Content/VBoxContainer/Control"]
 layout_mode = 2
@@ -301,6 +332,21 @@ text = "3"
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/Content/VBoxContainer/Control/TextureButton3"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -105.0
+offset_top = -74.0
+grow_horizontal = 0
+grow_vertical = 0
+texture = ExtResource("8_3qg7o")
+expand_mode = 1
+stretch_mode = 5
+
 [node name="TextureButton4" type="TextureButton" parent="CanvasLayer/Content/VBoxContainer/Control"]
 layout_mode = 2
 size_flags_horizontal = 3
@@ -324,6 +370,21 @@ text = "4"
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/Content/VBoxContainer/Control/TextureButton4"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -105.0
+offset_top = -74.0
+grow_horizontal = 0
+grow_vertical = 0
+texture = ExtResource("8_3qg7o")
+expand_mode = 1
+stretch_mode = 5
+
 [node name="TextureButton5" type="TextureButton" parent="CanvasLayer/Content/VBoxContainer/Control"]
 layout_mode = 2
 size_flags_horizontal = 3
@@ -346,6 +407,21 @@ theme_override_font_sizes/font_size = 71
 text = "5"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/Content/VBoxContainer/Control/TextureButton5"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -105.0
+offset_top = -74.0
+grow_horizontal = 0
+grow_vertical = 0
+texture = ExtResource("8_3qg7o")
+expand_mode = 1
+stretch_mode = 5
 
 [node name="Control2" type="HBoxContainer" parent="CanvasLayer/Content/VBoxContainer"]
 custom_minimum_size = Vector2(0, 200)
@@ -386,6 +462,21 @@ text = "6"
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/Content/VBoxContainer/Control2/TextureButton"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -105.0
+offset_top = -74.0
+grow_horizontal = 0
+grow_vertical = 0
+texture = ExtResource("8_3qg7o")
+expand_mode = 1
+stretch_mode = 5
+
 [node name="TextureButton2" type="TextureButton" parent="CanvasLayer/Content/VBoxContainer/Control2"]
 layout_mode = 2
 size_flags_horizontal = 3
@@ -408,6 +499,21 @@ theme_override_font_sizes/font_size = 71
 text = "7"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/Content/VBoxContainer/Control2/TextureButton2"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -105.0
+offset_top = -74.0
+grow_horizontal = 0
+grow_vertical = 0
+texture = ExtResource("8_3qg7o")
+expand_mode = 1
+stretch_mode = 5
 
 [node name="TextureButton3" type="TextureButton" parent="CanvasLayer/Content/VBoxContainer/Control2"]
 layout_mode = 2
@@ -432,6 +538,21 @@ text = "8"
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/Content/VBoxContainer/Control2/TextureButton3"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -105.0
+offset_top = -74.0
+grow_horizontal = 0
+grow_vertical = 0
+texture = ExtResource("8_3qg7o")
+expand_mode = 1
+stretch_mode = 5
+
 [node name="TextureButton4" type="TextureButton" parent="CanvasLayer/Content/VBoxContainer/Control2"]
 layout_mode = 2
 size_flags_horizontal = 3
@@ -455,6 +576,21 @@ text = "9"
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/Content/VBoxContainer/Control2/TextureButton4"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -105.0
+offset_top = -74.0
+grow_horizontal = 0
+grow_vertical = 0
+texture = ExtResource("8_3qg7o")
+expand_mode = 1
+stretch_mode = 5
+
 [node name="TextureButton5" type="TextureButton" parent="CanvasLayer/Content/VBoxContainer/Control2"]
 layout_mode = 2
 size_flags_horizontal = 3
@@ -477,6 +613,21 @@ theme_override_font_sizes/font_size = 71
 text = "10"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/Content/VBoxContainer/Control2/TextureButton5"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -105.0
+offset_top = -74.0
+grow_horizontal = 0
+grow_vertical = 0
+texture = ExtResource("8_3qg7o")
+expand_mode = 1
+stretch_mode = 5
 
 [node name="Control3" type="HBoxContainer" parent="CanvasLayer/Content/VBoxContainer"]
 custom_minimum_size = Vector2(0, 200)
@@ -517,6 +668,21 @@ text = "11"
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/Content/VBoxContainer/Control3/TextureButton"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -105.0
+offset_top = -74.0
+grow_horizontal = 0
+grow_vertical = 0
+texture = ExtResource("8_3qg7o")
+expand_mode = 1
+stretch_mode = 5
+
 [node name="TextureButton2" type="TextureButton" parent="CanvasLayer/Content/VBoxContainer/Control3"]
 layout_mode = 2
 size_flags_horizontal = 3
@@ -539,6 +705,21 @@ theme_override_font_sizes/font_size = 71
 text = "12"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/Content/VBoxContainer/Control3/TextureButton2"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -105.0
+offset_top = -74.0
+grow_horizontal = 0
+grow_vertical = 0
+texture = ExtResource("8_3qg7o")
+expand_mode = 1
+stretch_mode = 5
 
 [node name="TextureButton3" type="TextureButton" parent="CanvasLayer/Content/VBoxContainer/Control3"]
 layout_mode = 2
@@ -563,6 +744,21 @@ text = "13"
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/Content/VBoxContainer/Control3/TextureButton3"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -105.0
+offset_top = -74.0
+grow_horizontal = 0
+grow_vertical = 0
+texture = ExtResource("8_3qg7o")
+expand_mode = 1
+stretch_mode = 5
+
 [node name="TextureButton4" type="TextureButton" parent="CanvasLayer/Content/VBoxContainer/Control3"]
 layout_mode = 2
 size_flags_horizontal = 3
@@ -586,6 +782,21 @@ text = "14"
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/Content/VBoxContainer/Control3/TextureButton4"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -105.0
+offset_top = -74.0
+grow_horizontal = 0
+grow_vertical = 0
+texture = ExtResource("8_3qg7o")
+expand_mode = 1
+stretch_mode = 5
+
 [node name="TextureButton5" type="TextureButton" parent="CanvasLayer/Content/VBoxContainer/Control3"]
 layout_mode = 2
 size_flags_horizontal = 3
@@ -608,6 +819,21 @@ theme_override_font_sizes/font_size = 71
 text = "15"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/Content/VBoxContainer/Control3/TextureButton5"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -105.0
+offset_top = -74.0
+grow_horizontal = 0
+grow_vertical = 0
+texture = ExtResource("8_3qg7o")
+expand_mode = 1
+stretch_mode = 5
 
 [node name="Button" type="Button" parent="CanvasLayer/Content"]
 layout_mode = 1

@@ -7,3 +7,6 @@ func _on_button_3_pressed() -> void:
 	Global.save.cache = Global.save.template
 	Global.save.save_file()
 	$CanvasLayer/Control/Background/Content/Button3.text = "Save file reset\nReload browser window"
+
+func _on_button_pressed() -> void:
+	$CanvasLayer/Popup.visible = true
