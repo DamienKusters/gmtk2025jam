@@ -9,6 +9,7 @@ func _ready() -> void:
 	racetrack.current_lap_updated.connect(update_lap_progress)
 	racetrack.all_cars_destroyed.connect(fail_level_crash)
 	racetrack.race_finished.connect(complete_level)
+	Global.car_crashed.connect(func(): $Control/AnimationPlayer.play("show_newspaper"))
 	player.inventory_repair_packs_updated.connect(update_inventory)
 	player.player_died.connect(fail_level_kill)
 	update_inventory(player.get_inventory_size())

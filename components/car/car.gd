@@ -82,6 +82,7 @@ func _crash():
 	var expl = Global.get_car_explosion_instance()
 	expl.position = $Body.global_position
 	get_parent().get_parent().add_child(expl)
+	Global.car_crashed.emit()
 	call_deferred("queue_free")
 
 func _on_area_2d_area_entered(area: Area2D) -> void:

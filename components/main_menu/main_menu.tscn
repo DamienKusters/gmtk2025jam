@@ -2,9 +2,9 @@
 
 [ext_resource type="Texture2D" uid="uid://cngmgwi05fvks" path="res://components/ui/panel_nine_patch.png" id="1_7xoae"]
 [ext_resource type="Script" uid="uid://c7pymt0wsyd8h" path="res://components/main_menu/main_menu.gd" id="1_qpshq"]
+[ext_resource type="Texture2D" uid="uid://wdba846om6iy" path="res://components/main_menu/Mechanic_mania_logo.png" id="2_bkayj"]
 [ext_resource type="Texture2D" uid="uid://h5pfoyxa07cq" path="res://components/main_menu/gmtk-game-jam-2025-logo-white.png" id="2_c7jga"]
 [ext_resource type="Texture2D" uid="uid://b1u3h6f64a3ws" path="res://components/ui/panel_nine_patch_full_corners.png" id="2_e7231"]
-[ext_resource type="Texture2D" uid="uid://eg5xeoq07ksf" path="res://components/main_menu/Loop_mania_mechanic_logo.png" id="2_sarwh"]
 [ext_resource type="Texture2D" uid="uid://cqksx4jue42u6" path="res://components/main_menu/menu_person.png" id="3_s50wb"]
 [ext_resource type="Texture2D" uid="uid://bd30loy2jw4ra" path="res://components/main_menu/menu_arm.png" id="4_qpshq"]
 [ext_resource type="Texture2D" uid="uid://dj2cdh5lmw2bv" path="res://components/car/race_car_4.png" id="7_bkayj"]
@@ -76,9 +76,9 @@ anchor_left = 0.5
 anchor_right = 0.5
 offset_left = -402.0
 offset_right = 402.0
-offset_bottom = 406.0
+offset_bottom = 439.0
 grow_horizontal = 2
-texture = ExtResource("2_sarwh")
+texture = ExtResource("2_bkayj")
 expand_mode = 2
 stretch_mode = 5
 
@@ -128,7 +128,7 @@ anchor_bottom = 0.5
 offset_left = -235.0
 offset_top = -105.0
 offset_right = 235.0
-offset_bottom = 296.0
+offset_bottom = 206.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("1_7xoae")
@@ -187,11 +187,11 @@ Visuals by: Floris Peters
 
 Music by: Jochem van Hout
 
+Special thanks: Jurjen Verbruggen
+
 Car explosion: ansimuz.itch.io
 
-Sound effects: jsfxr (sfxr.me)
-
-Special thanks: Jurjen Verbruggen"
+Sound effects: jsfxr (sfxr.me)"
 
 [node name="Credits2" type="Label" parent="CanvasLayer/Control"]
 layout_mode = 1

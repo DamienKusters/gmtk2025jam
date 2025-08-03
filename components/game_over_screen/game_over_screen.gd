@@ -34,7 +34,7 @@ func _ready():
 
 func update_amount_of_laps_survived():
 	%LapsSurvived.visible = true
-	%LapsSurvived/LapsSurvived.text = str(ui.racetrack.current_lap) + " / " + str(ui.racetrack.total_laps)
+	%LapsSurvived/LapsSurvived.text = str(ui.racetrack.current_lap) + " / " + str(ui.racetrack.total_laps) + " laps"
 
 func update_expected_wins():
 	%ExpectedWins.visible = true
