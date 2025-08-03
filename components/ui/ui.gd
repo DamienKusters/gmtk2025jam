@@ -5,12 +5,13 @@ class_name UI
 @export var racetrack: Racetrack
 
 func _ready() -> void:
-	await get_parent().get_parent().ready 
+	await get_parent().get_parent().ready
 	racetrack.current_lap_updated.connect(update_lap_progress)
 	racetrack.all_cars_destroyed.connect(fail_level_crash)
 	racetrack.race_finished.connect(complete_level)
 	player.inventory_repair_packs_updated.connect(update_inventory)
 	player.player_died.connect(fail_level_kill)
+	update_inventory(player.get_inventory_size())
 
 func update_inventory(amount: int):
 	%ToolboxLabel.text = str(amount)

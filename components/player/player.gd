@@ -100,7 +100,7 @@ func _switch_hole_focus(hole: Hole):
 		_animate_progress()
 
 func _on_repair_timer_timeout() -> void:
-	if focussed_hole == null or inventory_repair_packs <= 0:
+	if focussed_hole == null or inventory_repair_packs <= 0 or alive == false:
 		return
 	focussed_hole.repair_hole()
 	holes_patched += 1

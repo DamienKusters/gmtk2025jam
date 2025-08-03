@@ -5,7 +5,6 @@ extends Node
 
 signal cash_updated
 signal player_upgrades_updated
-signal update_ui_expected_earnings
 signal game_over_screen_appeared
 
 var hole_instance: PackedScene = preload("res://components/hole/hole.tscn")
@@ -17,19 +16,20 @@ var restocking_point_instance: PackedScene = preload("res://components/restockin
 var restocking_coords = []# Read by Game
 
 # Level select
-var selected_racetrack: int = 1 # big one = 1
+var selected_racetrack: int = 0 # big one = 1
 var selected_difficulty: int = 0
 
 var racetracks = [
 	preload("res://components/racetrack/variants/tutorial/racetrack_tutorial.tscn"),
-	preload("res://components/racetrack/racetrack.tscn")
+	preload("res://components/racetrack/racetrack.tscn"),
+	preload("res://components/racetrack/variants/loop/racetrack_loop.tscn")
 ]
 
 var hole_textures = [
-	preload("res://components/hole/small.png"),
-	preload("res://components/hole/medium.png"),
-	preload("res://components/hole/big.png"),
-	preload("res://components/hole/large.png"),
+	preload("res://components/hole/2_small.png"),
+	preload("res://components/hole/2_medium.png"),
+	preload("res://components/hole/2_big.png"),
+	preload("res://components/hole/2_large.png"),
 ]
 
 var car_textures = [
@@ -37,6 +37,8 @@ var car_textures = [
 	preload("res://components/car/race_car_2.png"),
 	preload("res://components/car/race_car_3.png"),
 	preload("res://components/car/race_car_4.png"),
+	preload("res://components/car/race_car_5.png"),
+	preload("res://components/car/race_car_6.png"),
 ]
 
 # Save file

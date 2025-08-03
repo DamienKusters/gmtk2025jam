@@ -101,4 +101,4 @@ func _on_reset_restocking_button_pressed() -> void:
 	update_restock_cost()
 
 func _on_main_menu_button_pressed() -> void:
-	Global.load_game("res://components/main_menu/main_menu.tscn")
+	Global.load_game("res://components/level_select/level_select.tscn")

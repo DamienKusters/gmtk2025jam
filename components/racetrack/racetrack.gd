@@ -27,7 +27,8 @@ func _ready():
 		$CarTimer.stop()
 		$HoleTimer.stop()
 		$Background/Sprite2D3.visible = false
-	car_difficulty = Global.calculate_difficulty_based_on_upgrade_count()
+	#car_difficulty = Global.calculate_difficulty_based_on_upgrade_count() # old system
+	car_difficulty = Global.selected_difficulty
 	print("Difficulty: " + str(car_difficulty))
 	for c in car_amount:
 		var car = Global.get_car_instance()
@@ -64,7 +65,6 @@ func _car_lap_completed(car: Car):
 var _first_tick = true
 func _on_car_timer_timeout() -> void:
 	if _first_tick:
-		Global.update_ui_expected_earnings.emit()
 		race_started = true
 		_first_tick = false
 	if current_lap == total_laps:

@@ -9,7 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://dip50v30t86ww" path="res://components/restocking_point/toolbox.png" id="7_bv0o5"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_kfe3d"]
-radius = 50.01
+radius = 36.0139
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ph1f6"]
 radius = 90.0
@@ -150,6 +150,7 @@ autostart = true
 [node name="RepairTimer" type="Timer" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 40)
 shape = SubResource("CircleShape2D_kfe3d")
 
 [node name="Area2D" type="Area2D" parent="."]

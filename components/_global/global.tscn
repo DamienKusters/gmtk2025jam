@@ -14,7 +14,6 @@ script = ExtResource("2_fxurf")
 [node name="Test2" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("3_jt3x8")
 volume_db = -15.0
-autoplay = true
 
 [node name="SfxPlayer" type="Node" parent="."]
 script = ExtResource("4_o8g1v")

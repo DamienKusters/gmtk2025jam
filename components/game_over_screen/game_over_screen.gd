@@ -26,8 +26,15 @@ func _ready():
 	$AnimationPlayer.play("scale")
 	Global.sfx.play_sfx(sound_mapping[game_over_type])
 	%ExpectedWins.visible = false
+	%LapsSurvived.visible = false
 	if game_over_type == GameOverType.WIN:
 		update_expected_wins()
+	else:
+		update_amount_of_laps_survived()
+
+func update_amount_of_laps_survived():
+	%LapsSurvived.visible = true
+	%LapsSurvived/LapsSurvived.text = str(ui.racetrack.current_lap) + " / " + str(ui.racetrack.total_laps)
 
 func update_expected_wins():
 	%ExpectedWins.visible = true

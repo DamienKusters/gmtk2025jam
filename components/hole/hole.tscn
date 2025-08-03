@@ -1,10 +1,11 @@
-[gd_scene load_steps=5 format=3 uid="uid://uqxtdcyag4ac"]
+[gd_scene load_steps=6 format=3 uid="uid://uqxtdcyag4ac"]
 
-[ext_resource type="Texture2D" uid="uid://lsa7hs0ehxmx" path="res://components/hole/large.png" id="1_bt2p0"]
 [ext_resource type="Script" uid="uid://d0q4eixv5680g" path="res://components/hole/hole.gd" id="1_lfo0s"]
+[ext_resource type="Texture2D" uid="uid://dp1v1iibsqx4u" path="res://components/hole/2_large.png" id="2_lfo0s"]
+[ext_resource type="Texture2D" uid="uid://cn2vjsxrijjxi" path="res://components/hole/particle.png" id="3_qgldh"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_lfo0s"]
-radius = 85.0
+[sub_resource type="CircleShape2D" id="CircleShape2D_qgldh"]
+radius = 49.0408
 
 [sub_resource type="Gradient" id="Gradient_lfo0s"]
 offsets = PackedFloat32Array(0, 0.8, 1)
@@ -15,15 +16,16 @@ monitoring = false
 script = ExtResource("1_lfo0s")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("CircleShape2D_lfo0s")
+shape = SubResource("CircleShape2D_qgldh")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-scale = Vector2(3, 3)
-texture = ExtResource("1_bt2p0")
+scale = Vector2(0.223092, 0.223092)
+texture = ExtResource("2_lfo0s")
 
 [node name="CPUParticles2D" type="CPUParticles2D" parent="."]
 emitting = false
 amount = 10
+texture = ExtResource("3_qgldh")
 lifetime = 1.2
 one_shot = true
 explosiveness = 0.95
@@ -32,7 +34,8 @@ emission_sphere_radius = 47.54
 direction = Vector2(0, -1)
 initial_velocity_min = 494.95
 initial_velocity_max = 494.95
-scale_amount_min = 7.0
-scale_amount_max = 7.0
-color = Color(0.0885599, 0.0885599, 0.0885599, 1)
+angular_velocity_min = -200.0
+angular_velocity_max = 200.0
+scale_amount_min = 0.1
+scale_amount_max = 0.3
 color_ramp = SubResource("Gradient_lfo0s")

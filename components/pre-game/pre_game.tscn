@@ -1,13 +1,14 @@
 [gd_scene load_steps=7 format=3 uid="uid://bf4vt234fvtpp"]
 
 [ext_resource type="Script" uid="uid://b6fihh5ww34p" path="res://components/pre-game/pre_game_ui.gd" id="1_5e81d"]
-[ext_resource type="PackedScene" uid="uid://24qjy78bw8hb" path="res://components/racetrack/racetrack.tscn" id="1_bbs4h"]
+[ext_resource type="Script" uid="uid://b4ggat457hhh6" path="res://components/pre-game/pre_game.gd" id="1_xqd0a"]
 [ext_resource type="Texture2D" uid="uid://cngmgwi05fvks" path="res://components/ui/panel_nine_patch.png" id="2_5k1dc"]
 [ext_resource type="Texture2D" uid="uid://b1u3h6f64a3ws" path="res://components/ui/panel_nine_patch_full_corners.png" id="2_ex6td"]
 [ext_resource type="PackedScene" uid="uid://c0c54hoas1p1n" path="res://components/pre-game/popup/popup.tscn" id="2_tw0f8"]
 [ext_resource type="Texture2D" uid="uid://cpqd4au6vnya" path="res://components/ui/panel_nine_patch_full_corners_filled.png" id="3_5k1dc"]
 
 [node name="PreGame" type="Node"]
+script = ExtResource("1_xqd0a")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
@@ -218,7 +219,7 @@ theme_override_constants/separation = 10
 unique_name_in_owner = true
 custom_minimum_size = Vector2(150, 0)
 layout_mode = 2
-text = "Main Menu"
+text = "Level Select"
 
 [node name="SpeedButton" type="Button" parent="CanvasLayer/PreGame/Content/BottomBar/Bot"]
 unique_name_in_owner = true
@@ -272,9 +273,7 @@ text = "START RACE"
 unique_name_in_owner = true
 layout_mode = 1
 
-[node name="Racetrack" parent="." instance=ExtResource("1_bbs4h")]
-car_amount = 0
-demo = true
+[node name="RacetrackSlot" type="Node2D" parent="."]
 
 [node name="RestockingPoints" type="Node2D" parent="."]
 unique_name_in_owner = true

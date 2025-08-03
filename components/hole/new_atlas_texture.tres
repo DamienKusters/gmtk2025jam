@@ -1,0 +1,7 @@
+[gd_resource type="AtlasTexture" load_steps=2 format=3 uid="uid://1crpdgqq5nlj"]
+
+[ext_resource type="Texture2D" uid="uid://biihv4sebpnwm" path="res://components/hole/Road_break_sprite.png" id="1_ddnnf"]
+
+[resource]
+atlas = ExtResource("1_ddnnf")
+region = Rect2(0, 0, 768, 511)

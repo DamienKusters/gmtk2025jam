@@ -6,6 +6,7 @@ class_name Hole
 func _ready():
 	_render_hole(hole_size)
 	$CPUParticles2D.restart()
+	$Sprite2D.flip_h = randf_range(0, 1) > .5 # 50 percent of the time, the hole is flipped
 
 func hole_is_max_size() -> bool:
 	return hole_size == Global.get_hole_textures().size() -1

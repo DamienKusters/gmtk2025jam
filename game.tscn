@@ -28,3 +28,23 @@ limit_right = 3626
 limit_bottom = 1835
 position_smoothing_enabled = true
 player = NodePath("../Player")
+
+[node name="CornersHelper" type="Node2D" parent="."]
+
+[node name="Line2D" type="Line2D" parent="CornersHelper"]
+points = PackedVector2Array(-2635, -2030, 3926, -2041)
+default_color = Color(1, 0, 0, 1)
+
+[node name="Line2D2" type="Line2D" parent="CornersHelper"]
+points = PackedVector2Array(-2502, -2198, -2492, 1736)
+default_color = Color(1, 0, 0, 1)
+
+[node name="Line2D3" type="Line2D" parent="CornersHelper"]
+position = Vector2(6135, 47)
+points = PackedVector2Array(-2502, -2198, -2492, 1736)
+default_color = Color(1, 0, 0, 1)
+
+[node name="Line2D4" type="Line2D" parent="CornersHelper"]
+position = Vector2(-170, 3860)
+points = PackedVector2Array(-2487, -2011, 3812, -2011)
+default_color = Color(1, 0, 0, 1)
