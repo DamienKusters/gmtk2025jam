@@ -1,6 +1,7 @@
-[gd_scene load_steps=7 format=3 uid="uid://bug0tli3hqb5n"]
+[gd_scene load_steps=8 format=3 uid="uid://bug0tli3hqb5n"]
 
 [ext_resource type="Script" uid="uid://wnqwwp8fuaf8" path="res://components/ui/ui.gd" id="1_wh8a2"]
+[ext_resource type="Texture2D" uid="uid://b1u3h6f64a3ws" path="res://components/ui/panel_nine_patch_full_corners.png" id="2_vtyio"]
 [ext_resource type="Texture2D" uid="uid://i1xlwqnuq3rr" path="res://components/ui/repair_pack_icon.png" id="2_wh8a2"]
 [ext_resource type="Texture2D" uid="uid://dtjxlxym27mah" path="res://components/ui/The_daily_drive.png" id="3_voclx"]
 
@@ -51,6 +52,20 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_wh8a2")
 
+[node name="Background2" type="NinePatchRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_vtyio")
+region_rect = Rect2(0, 0, 139, 138)
+patch_margin_left = 30
+patch_margin_top = 29
+patch_margin_right = 30
+patch_margin_bottom = 30
+
 [node name="Margin" type="Control" parent="."]
 layout_mode = 1
 anchors_preset = 15
@@ -95,6 +110,7 @@ theme_override_font_sizes/font_size = 31
 text = "4"
 
 [node name="ProgressBar" type="ProgressBar" parent="."]
+visible = false
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5

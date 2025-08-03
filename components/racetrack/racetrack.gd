@@ -23,6 +23,7 @@ var current_lap: int = 0:
 
 func _ready():
 	Global.game_over_screen_appeared.connect(_stop_all_cars)
+	$Background/Sprite2D3.visible = false # not needed anymore because we now have a help menu
 	if demo:
 		$CarTimer.stop()
 		$HoleTimer.stop()

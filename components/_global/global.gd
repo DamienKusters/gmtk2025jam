@@ -2,6 +2,7 @@ extends Node
 
 @onready var save: Save = $Save
 @onready var sfx: Sfx = $SfxPlayer
+@onready var music: MusicPlayer = $MusicPlayer
 
 signal cash_updated
 signal player_upgrades_updated
@@ -117,6 +118,7 @@ func complete_level(cash_reward: int, scene_override = "res://components/pre-gam
 	_previous_player_upgrades = player_upgrades.duplicate()
 	_previous_cash = cash + cash_reward
 	cash = _previous_cash # set cash
+	music.play_music("garage")
 	_save_save_file()
 	load_game(scene_override)
 
@@ -124,6 +126,7 @@ func fail_level():
 	load_game("res://components/pre-game/pre_game.tscn")
 	player_upgrades = _previous_player_upgrades.duplicate()
 	cash = _previous_cash
+	music.play_music("garage")
 	#_save_save_file() # Level failed, no saving needed
 
 func load_game(scene: String = "res://game.tscn"):

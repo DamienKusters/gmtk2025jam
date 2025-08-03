@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://c48bsnli5fjr2"]
+[gd_scene load_steps=6 format=3 uid="uid://c48bsnli5fjr2"]
 
 [ext_resource type="Script" uid="uid://bxtgoelyuxthd" path="res://components/_global/global.gd" id="1_lrh7y"]
 [ext_resource type="Script" uid="uid://bmvvxgfhevcx2" path="res://components/_global/save.gd" id="2_fxurf"]
-[ext_resource type="AudioStream" uid="uid://dsmkyrf64ksbr" path="res://components/_global/test 2.mp3" id="3_jt3x8"]
+[ext_resource type="AudioStream" uid="uid://dwfru1dto5bio" path="res://components/_global/Garage.mp3" id="3_ri8gj"]
 [ext_resource type="Script" uid="uid://dpoo4n0t5kr7" path="res://components/_global/sfx_player.gd" id="4_o8g1v"]
+[ext_resource type="Script" uid="uid://c0ulim5m3hpyg" path="res://components/_global/music_player.gd" id="4_ri8gj"]
 
 [node name="Global" type="Node"]
 script = ExtResource("1_lrh7y")
@@ -11,9 +12,12 @@ script = ExtResource("1_lrh7y")
 [node name="Save" type="Node" parent="."]
 script = ExtResource("2_fxurf")
 
-[node name="Test2" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("3_jt3x8")
-volume_db = -15.0
+[node name="MusicPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_ri8gj")
+volume_db = -10.0
+autoplay = true
+mix_target = 1
+script = ExtResource("4_ri8gj")
 
 [node name="SfxPlayer" type="Node" parent="."]
 script = ExtResource("4_o8g1v")

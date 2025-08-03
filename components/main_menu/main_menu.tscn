@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://babkyi6noh1qh"]
+[gd_scene load_steps=23 format=3 uid="uid://babkyi6noh1qh"]
 
 [ext_resource type="Texture2D" uid="uid://cngmgwi05fvks" path="res://components/ui/panel_nine_patch.png" id="1_7xoae"]
 [ext_resource type="Script" uid="uid://c7pymt0wsyd8h" path="res://components/main_menu/main_menu.gd" id="1_qpshq"]
@@ -10,6 +10,13 @@
 [ext_resource type="Script" uid="uid://c5hddunfgawia" path="res://components/pre-game/popup/popup.gd" id="6_7oyqf"]
 [ext_resource type="Texture2D" uid="uid://dj2cdh5lmw2bv" path="res://components/car/race_car_4.png" id="7_bkayj"]
 [ext_resource type="PackedScene" uid="uid://24qjy78bw8hb" path="res://components/racetrack/racetrack.tscn" id="7_eakp8"]
+[ext_resource type="Texture2D" uid="uid://blbait4ktryut" path="res://components/main_menu/help/1.png" id="7_iakjq"]
+[ext_resource type="Script" uid="uid://cv72hhjxcej6o" path="res://components/main_menu/help/help.gd" id="7_yunlg"]
+[ext_resource type="Texture2D" uid="uid://bbwvi8251080" path="res://components/main_menu/help/2.png" id="8_5nkcd"]
+[ext_resource type="Texture2D" uid="uid://kawnyhecdin7" path="res://components/main_menu/help/4.png" id="9_qhu80"]
+[ext_resource type="Texture2D" uid="uid://ispqyy3rnn61" path="res://components/main_menu/help/3.png" id="10_yunlg"]
+[ext_resource type="Texture2D" uid="uid://d28b7wajw8mqx" path="res://components/main_menu/help/5.png" id="11_5nkcd"]
+[ext_resource type="Texture2D" uid="uid://c0i62qhds6fjh" path="res://components/main_menu/help/6.png" id="13_gixmx"]
 
 [sub_resource type="Gradient" id="Gradient_bkayj"]
 offsets = PackedFloat32Array(0.538961, 1)
@@ -77,7 +84,7 @@ anchor_left = 0.5
 anchor_right = 0.5
 offset_left = -402.0
 offset_right = 402.0
-offset_bottom = 439.0
+offset_bottom = 388.0
 grow_horizontal = 2
 texture = ExtResource("2_bkayj")
 expand_mode = 2
@@ -160,7 +167,7 @@ text = "Play Game"
 [node name="Button" type="Button" parent="CanvasLayer/Control/Background/Content"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 29
-text = "How To Play"
+text = "How to play"
 
 [node name="Padding" type="Control" parent="CanvasLayer/Control/Background/Content"]
 layout_mode = 2
@@ -190,7 +197,6 @@ Music by: Jochem van Hout
 Special thanks: Jurjen Verbruggen
 
 Car explosion: ansimuz.itch.io
-
 Sound effects: jsfxr (sfxr.me)"
 
 [node name="Credits2" type="Label" parent="CanvasLayer/Control"]
@@ -208,17 +214,16 @@ theme_override_font_sizes/font_size = 25
 text = "damienkusters.itch.io"
 
 [node name="Popup" type="Control" parent="CanvasLayer"]
-visible = false
 layout_mode = 3
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -499.0
-offset_top = -195.0
-offset_right = 499.0
-offset_bottom = 503.0
+offset_left = -511.0
+offset_top = -230.0
+offset_right = 511.0
+offset_bottom = 540.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("6_7oyqf")
@@ -248,6 +253,7 @@ offset_right = -20.0
 offset_bottom = -20.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("7_yunlg")
 
 [node name="Label2" type="Label" parent="CanvasLayer/Popup/Content"]
 layout_mode = 1
@@ -255,20 +261,186 @@ anchors_preset = 10
 anchor_right = 1.0
 offset_bottom = 23.0
 grow_horizontal = 2
-text = "How To Play"
+theme_override_font_sizes/font_size = 31
+text = "How to play"
 horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Popup/Content"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/Popup/Content/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 40
+alignment = 1
+
+[node name="Button" type="Button" parent="CanvasLayer/Popup/Content/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 26
+text = "Previous"
+
+[node name="Button2" type="Button" parent="CanvasLayer/Popup/Content/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 26
+text = "Next"
+
+[node name="Story1" type="VBoxContainer" parent="CanvasLayer/Popup/Content/VBoxContainer"]
+unique_name_in_owner = true
+visible = false
+custom_minimum_size = Vector2(0, 600)
+layout_mode = 2
+
+[node name="Label" type="Label" parent="CanvasLayer/Popup/Content/VBoxContainer/Story1"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 31
+text = "You play as Mr. Loop, a veteran road maintenance worker.
+
+Your new assignment requires you to be a mechanic for the upcoming grand prix. Experts discovered that the asphalt's quality was not satisfactory."
+autowrap_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/Popup/Content/VBoxContainer/Story1"]
+layout_mode = 2
+size_flags_vertical = 3
+texture = ExtResource("7_iakjq")
+expand_mode = 2
+stretch_mode = 5
+
+[node name="Story2" type="VBoxContainer" parent="CanvasLayer/Popup/Content/VBoxContainer"]
+unique_name_in_owner = true
+visible = false
+custom_minimum_size = Vector2(0, 600)
+layout_mode = 2
+
+[node name="Label" type="Label" parent="CanvasLayer/Popup/Content/VBoxContainer/Story2"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 31
+text = "The twist?
+The grand prix is happening RIGHT NOW and you must stay on your toes to ensure the race concludes successfully."
+autowrap_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/Popup/Content/VBoxContainer/Story2"]
+layout_mode = 2
+size_flags_vertical = 3
+texture = ExtResource("8_5nkcd")
+expand_mode = 2
+stretch_mode = 5
+
+[node name="Story3" type="VBoxContainer" parent="CanvasLayer/Popup/Content/VBoxContainer"]
+unique_name_in_owner = true
+visible = false
+custom_minimum_size = Vector2(0, 600)
+layout_mode = 2
+
+[node name="Label" type="Label" parent="CanvasLayer/Popup/Content/VBoxContainer/Story3"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 31
+text = "Racecars gradually damage the road. Stand near cracks to patch them up.
+Watch out! Those cars ain't stopping, the only thing on their mind is that shiny cup!"
+autowrap_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/Popup/Content/VBoxContainer/Story3"]
+layout_mode = 2
+size_flags_vertical = 3
+texture = ExtResource("8_5nkcd")
+expand_mode = 2
+stretch_mode = 5
+
+[node name="Story4" type="VBoxContainer" parent="CanvasLayer/Popup/Content/VBoxContainer"]
+unique_name_in_owner = true
+visible = false
+custom_minimum_size = Vector2(0, 600)
+layout_mode = 2
+
+[node name="Label" type="Label" parent="CanvasLayer/Popup/Content/VBoxContainer/Story4"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 31
+text = "\"They accept a loss in payout in the event racecars tragically crash on the heaviest of road damage.\"
+~ Court of Loopyland"
+autowrap_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/Popup/Content/VBoxContainer/Story4"]
+layout_mode = 2
+size_flags_vertical = 3
+texture = ExtResource("9_qhu80")
+expand_mode = 2
+stretch_mode = 5
+
+[node name="Story5" type="VBoxContainer" parent="CanvasLayer/Popup/Content/VBoxContainer"]
+unique_name_in_owner = true
+visible = false
+custom_minimum_size = Vector2(0, 600)
+layout_mode = 2
+
+[node name="Label" type="Label" parent="CanvasLayer/Popup/Content/VBoxContainer/Story5"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 31
+text = "Carrying tools can get quite heavy for an elderly mechanic.
+Head towards a toolbox to replenish your tools and fix the road."
+autowrap_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/Popup/Content/VBoxContainer/Story5"]
+layout_mode = 2
+size_flags_vertical = 3
+texture = ExtResource("10_yunlg")
+expand_mode = 2
+stretch_mode = 5
+
+[node name="Story6" type="VBoxContainer" parent="CanvasLayer/Popup/Content/VBoxContainer"]
+unique_name_in_owner = true
+visible = false
+custom_minimum_size = Vector2(0, 600)
+layout_mode = 2
+
+[node name="Label" type="Label" parent="CanvasLayer/Popup/Content/VBoxContainer/Story6"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 31
+text = "Speaking of toolboxes; You, kind sir, must strategically place them for an optimal workflow. Do that right before the race begins."
+autowrap_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/Popup/Content/VBoxContainer/Story6"]
+layout_mode = 2
+size_flags_vertical = 3
+texture = ExtResource("11_5nkcd")
+expand_mode = 2
+stretch_mode = 5
+
+[node name="Story7" type="VBoxContainer" parent="CanvasLayer/Popup/Content/VBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 600)
+layout_mode = 2
+
+[node name="Label" type="Label" parent="CanvasLayer/Popup/Content/VBoxContainer/Story7"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 31
+text = "One last thing to get you off your feet:
+Spend your earnings into upgrades, this will help you with the more difficult levels!
+You'll keep your upgrades when you win a game. Failing a level will refund your upgrades.
+Without further ado; \"Can we (grand)-prix it? Yes we can!\""
+autowrap_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/Popup/Content/VBoxContainer/Story7"]
+layout_mode = 2
+size_flags_vertical = 3
+texture = ExtResource("13_gixmx")
+expand_mode = 2
+stretch_mode = 5
 
 [node name="Button" type="Button" parent="CanvasLayer/Popup"]
 layout_mode = 1
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
-offset_left = -54.0
-offset_bottom = 49.0
+offset_left = -73.0
+offset_bottom = 72.0
 grow_horizontal = 0
-theme_override_font_sizes/font_size = 26
+theme_override_font_sizes/font_size = 46
 text = "x"
 flat = true
 
@@ -305,4 +477,6 @@ autoplay = "wave"
 [connection signal="pressed" from="CanvasLayer/Control/Background/Content/Button2" to="." method="_on_button_2_pressed"]
 [connection signal="pressed" from="CanvasLayer/Control/Background/Content/Button" to="." method="_on_button_pressed"]
 [connection signal="pressed" from="CanvasLayer/Control/Background/Content/Button3" to="." method="_on_button_3_pressed"]
+[connection signal="pressed" from="CanvasLayer/Popup/Content/VBoxContainer/HBoxContainer/Button" to="CanvasLayer/Popup/Content" method="_on_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/Popup/Content/VBoxContainer/HBoxContainer/Button2" to="CanvasLayer/Popup/Content" method="_on_button_2_pressed"]
 [connection signal="pressed" from="CanvasLayer/Popup/Button" to="CanvasLayer/Popup" method="_on_button_pressed"]

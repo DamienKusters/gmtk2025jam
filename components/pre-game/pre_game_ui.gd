@@ -61,8 +61,8 @@ func upgrade_bought(id: String):
 		Global.player_upgrades = Global.player_upgrades # Cringe way to trigger event :)
 
 func update_restock_cost():
-	var cost = _calculate_cost_of_restock_count(placed_restocking_pins)
-	%RestockPriceLabel.text = "Next toolbox cost: " + str(cost if cost != 0 else "FREE")
+	var cost = _calculate_cost_of_restock_count(placed_restocking_pins - 1)
+	%RestockPriceLabel.text = "Cost of toolboxes: " + str(cost if cost != 0 else "FREE")
 
 func _calculate_cost_of_restock_count(amount_of_points: int) -> int:
 	if amount_of_points == 0:

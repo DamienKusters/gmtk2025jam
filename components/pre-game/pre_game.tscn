@@ -134,7 +134,7 @@ autowrap_mode = 2
 
 [node name="Panel3" type="Panel" parent="CanvasLayer/PreGame/Content/BottomBar/Top"]
 self_modulate = Color(1, 1, 1, 0)
-custom_minimum_size = Vector2(110, 0)
+custom_minimum_size = Vector2(150, 0)
 layout_mode = 2
 
 [node name="SpeedLabel" type="Label" parent="CanvasLayer/PreGame/Content/BottomBar/Top/Panel3"]
@@ -152,7 +152,7 @@ autowrap_mode = 2
 
 [node name="Panel4" type="Panel" parent="CanvasLayer/PreGame/Content/BottomBar/Top"]
 self_modulate = Color(1, 1, 1, 0)
-custom_minimum_size = Vector2(110, 0)
+custom_minimum_size = Vector2(150, 0)
 layout_mode = 2
 
 [node name="RepairLabel" type="Label" parent="CanvasLayer/PreGame/Content/BottomBar/Top/Panel4"]
@@ -170,7 +170,7 @@ autowrap_mode = 2
 
 [node name="Panel5" type="Panel" parent="CanvasLayer/PreGame/Content/BottomBar/Top"]
 self_modulate = Color(1, 1, 1, 0)
-custom_minimum_size = Vector2(110, 0)
+custom_minimum_size = Vector2(150, 0)
 layout_mode = 2
 
 [node name="InvLabel" type="Label" parent="CanvasLayer/PreGame/Content/BottomBar/Top/Panel5"]
@@ -219,25 +219,26 @@ theme_override_constants/separation = 10
 unique_name_in_owner = true
 custom_minimum_size = Vector2(150, 0)
 layout_mode = 2
-text = "Level Select"
+text = "Back to
+Level Select"
 
 [node name="SpeedButton" type="Button" parent="CanvasLayer/PreGame/Content/BottomBar/Bot"]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(110, 0)
+custom_minimum_size = Vector2(150, 0)
 layout_mode = 2
 text = "+ Speed
 - 5 cash"
 
 [node name="RepairButton" type="Button" parent="CanvasLayer/PreGame/Content/BottomBar/Bot"]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(110, 0)
+custom_minimum_size = Vector2(150, 0)
 layout_mode = 2
 text = "+ Speed
 - 5 cash"
 
 [node name="InvButton" type="Button" parent="CanvasLayer/PreGame/Content/BottomBar/Bot"]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(110, 0)
+custom_minimum_size = Vector2(150, 0)
 layout_mode = 2
 text = "+ Speed
 - 5 cash"

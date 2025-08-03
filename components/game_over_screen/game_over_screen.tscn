@@ -223,7 +223,14 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
+[node name="Label2" type="Label" parent="Background/Content/Content/ExpectedWins"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 26
+text = "The race concluded!"
+horizontal_alignment = 1
+
 [node name="Label" type="Label" parent="Background/Content/Content/ExpectedWins"]
+visible = false
 layout_mode = 2
 theme_override_font_sizes/font_size = 26
 text = "Earnings:"
@@ -288,13 +295,13 @@ theme_override_constants/separation = 10
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_font_sizes/font_size = 29
-text = "Replay Level"
+text = "Replay level"
 
 [node name="NextButton" type="Button" parent="Background/Content/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_font_sizes/font_size = 29
-text = "Next Level"
+text = "Next level"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 root_node = NodePath("../Control/TextureRect")
