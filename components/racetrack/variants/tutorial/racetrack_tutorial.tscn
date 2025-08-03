@@ -25,6 +25,7 @@ point_count = 36
 
 [node name="RacetrackTutorial" type="Node2D"]
 script = ExtResource("1_uljgp")
+car_amount = 3
 minimum_completion_cash = 50
 
 [node name="CarTimer" type="Timer" parent="."]

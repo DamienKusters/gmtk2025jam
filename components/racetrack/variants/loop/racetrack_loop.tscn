@@ -25,7 +25,6 @@ point_count = 33
 
 [node name="RacetrackLoop" type="Node2D"]
 script = ExtResource("1_uwahh")
-car_amount = 5
 minimum_completion_cash = 150
 
 [node name="CarTimer" type="Timer" parent="."]

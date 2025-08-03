@@ -842,7 +842,6 @@ offset_bottom = 108.0
 theme_override_font_sizes/font_size = 32
 text = "Back to
 Main Menu"
-flat = true
 
 [node name="Racetrack" parent="." instance=ExtResource("6_br5jp")]
 position = Vector2(650, 955)
